@@ -1,0 +1,8 @@
+<%= nav_bar brand: ENV['APP_NAME'], responsive: true do %>
+  <%# render partial: 'layouts/nav/left' %>
+  <%= render partial: 'layouts/nav/right' %>
+<% end %>
+
+<% nav_bar class: 'nav nav-pills', responsive: true do %>
+  <%= render partial: 'layouts/nav/tabs' %>
+<% end %>
