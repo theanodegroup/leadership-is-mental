@@ -2,16 +2,16 @@ class PagesController < ApplicationController
   def about
   end
 
-  def what-you-get
+  def what_you_get
   end
 
-  def leadership-jobs
+  def leadership_jobs
   end
 
   def events
   end
 
-  def free-ebook
+  def free_ebook
   end
 
   def blog
@@ -20,6 +20,6 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def newsletter-signup
+  def newsletter_signup
   end
 end

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'pages/contact', to: 'pages#contact', as: :contact
   get 'pages/newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
 
+  root 'pages#home'
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -63,4 +66,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

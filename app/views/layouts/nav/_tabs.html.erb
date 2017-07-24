@@ -1,5 +1,7 @@
-<%= menu_item("About", about_path) %>
-<%= menu_item("What you get", what_you_get_path) %>
-<%= menu_item("Leadership Jobs", leadership_jobs_path) %>
-<%= menu_item("Events", events_path) %>
-<%= menu_item("Free eBook", free_ebook_path) %>
+<%= menu_group do %>
+  <%= menu_item("About", about_path) %>
+  <%= menu_item("What you get", what_you_get_path) %>
+  <%= menu_item("Leadership Jobs", leadership_jobs_path) %>
+  <%= menu_item("Events", events_path) %>
+  <%= menu_item("Free eBook", free_ebook_path) %>
+<% end %>
