@@ -73,6 +73,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    newrelic_rpm (4.2.0.334)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.21.0)
@@ -153,6 +154,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  newrelic_rpm
   pg
   rails (= 4.2.5)
   rails_12factor
