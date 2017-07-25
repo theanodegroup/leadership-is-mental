@@ -22,4 +22,19 @@ class PagesController < ApplicationController
 
   def newsletter_signup
   end
+
+  def disclaimer
+  end
+
+  def legal
+  end
+
+  def terms_of_use
+  end
+
+  def sitemap
+  end
+
+  def contact
+  end
 end

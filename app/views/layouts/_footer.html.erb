@@ -1,4 +1,7 @@
 <footer>
   <br>
-  <p>&copy; <%= ENV['APP_NAME'] %> <%= Time.current.year %></p>
+  <%= nav_bar responsive: true do %>
+    <%= render partial: 'layouts/nav/footer' %>
+  <% end %>
+  <p>&copy; The Anode Group <%= Time.current.year %></p>
 </footer>
