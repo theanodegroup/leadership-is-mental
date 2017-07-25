@@ -1,2 +1,36 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render partial: 'editable/text', locals: { phrase: 'home/brand_statement' } %>
+<div class='clearfix'></div>
+<br>
+<%= render partial: 'pages/home/carousel' %>
+
+<br>
+<br>
+<% 3.times do |i| %>
+  <div class='col-md-4'>
+    <%= render partial: 'editable/panel', locals: {
+      phrase_heading: "home/panel_heading_#{i + 1}_of_3",
+      phrase_body: "home/panel_body_#{i + 1}_of_3",
+    } %>
+  </div>
+<% end %>
+<div class='clearfix'></div>
+
+<br>
+<div class='col-md-12'>
+  <%= render partial: 'editable/panel', locals: {
+    phrase_heading: "home/panel_heading_wide",
+    phrase_body: "home/panel_body_wide",
+  } %>
+</div>
+<div class='clearfix'></div>
+
+<br>
+<% 3.times do |i| %>
+  <div class='col-md-4'>
+    <%= render partial: 'editable/panel', locals: {
+      phrase_heading: "home/feed_panel_heading_#{i + 1}_of_3",
+      phrase_body: "home/feed_panel_body_#{i + 1}_of_3",
+    } %>
+  </div>
+<% end %>
+<div class='clearfix'></div>
