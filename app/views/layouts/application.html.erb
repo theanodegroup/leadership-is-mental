@@ -32,13 +32,13 @@
       <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
-    <% @contact = Contact.new if !@contact.present? %>
-    <%= render partial: 'newsletter/modal', locals: {
-      body_partial: 'new', modal_id: 'newsletter_signup_new'
-    } %>
-    <%= render partial: 'newsletter/modal', locals: {
-      body_partial: 'success', modal_id: 'newsletter_signup_success'
-    } %>
+      <% @contact = Contact.new if @contact.nil? %>
+      <%= render partial: 'newsletter/modal', locals: {
+        body_partial: 'new', modal_id: 'newsletter_signup_new'
+      } %>
+      <%= render partial: 'newsletter/modal', locals: {
+        body_partial: 'success', modal_id: 'newsletter_signup_success'
+      } %>
 
       <script>
         <% if @show_newsletter_signup  %>

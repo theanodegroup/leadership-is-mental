@@ -1,1 +1,3 @@
-$('#modal-body newsletter').html(<%= render partial: 'newsletter/signup/new' %>);
+<% puts render partial: 'newsletter/signup/new' %>
+
+$( "#newsletter_signup_new .modal-body" ).html( "<%= j render partial: 'newsletter/signup/new' %>" );
