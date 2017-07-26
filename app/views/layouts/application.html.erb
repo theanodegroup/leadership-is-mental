@@ -33,12 +33,33 @@
 
     </div> <!-- /container -->
     <% @contact = Contact.new if !@contact.present? %>
-    <%= render partial: 'newsletter/modal' %>
+    <%= render partial: 'newsletter/modal', locals: {
+      body_partial: 'new', modal_id: 'newsletter_signup_new'
+    } %>
+    <%= render partial: 'newsletter/modal', locals: {
+      body_partial: 'success', modal_id: 'newsletter_signup_success'
+    } %>
 
-    <% unless @supress_newsletter_modal %>
       <script>
-        $('#newsletter_signup').modal('show')
+        <% if @show_newsletter_signup  %>
+          $('#newsletter_signup_new').modal('show');
+        <% end %>
+
+        $('.close_newsletter_modal').click(function() {
+          $('#newsletter_signup_new').modal('hide');
+          $('#newsletter_signup_success').modal('hide');
+          return false;
+        });
+
+        $('.show_newsletter_modal_new').click(function() {
+          $('#newsletter_signup_new').modal('show');
+          return false;
+        });
+
+        $('.show_newsletter_modal_success').click(function() {
+          $('#newsletter_signup_success').modal('show');
+          return false;
+        });
       </script>
-    <% end %>
   </body>
 </html>

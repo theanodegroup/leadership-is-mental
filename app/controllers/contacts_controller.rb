@@ -30,9 +30,11 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
+        format.js { render 'newsletter/signup_success' }
       else
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.js { render 'newsletter/signup_failure' }
       end
     end
   end
