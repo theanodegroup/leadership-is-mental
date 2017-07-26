@@ -32,5 +32,13 @@
       <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
+    <% @contact = Contact.new if !@contact.present? %>
+    <%= render partial: 'newsletter/modal' %>
+
+    <% unless @supress_newsletter_modal %>
+      <script>
+        $('#newsletter_signup').modal('show')
+      </script>
+    <% end %>
   </body>
 </html>
