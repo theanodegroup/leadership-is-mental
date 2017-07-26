@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :contacts
   get 'pages/blog', to: 'pages#blog', as: :blog
-  get 'pages/contact', to: 'pages#contact', as: :contact
+  get 'pages/contact', to: 'pages#contact', as: :contact_us
   get 'pages/newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
 
   get 'pages/about', to: 'pages#about', as: :about
