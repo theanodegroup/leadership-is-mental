@@ -1,13 +1,10 @@
 <%= menu_group pull: :right do %>
-  <%= menu_item(ENV.fetch('SOCIAL_MEDIA_URL_FACEBOOK')) do %>
-    <%= image_tag 'branding/facebook/FB-f-Logo__blue_29.png' %>
-  <% end %>
-  <%= menu_item(ENV.fetch('SOCIAL_MEDIA_URL_TWITTER')) do %>
-    <%= image_tag 'branding/twitter/Twitter_Social_Icon_Rounded_Square_Color-29px.png' %>
-  <% end %>
-  <%= menu_item(ENV.fetch('SOCIAL_MEDIA_URL_LINKEDIN')) do %>
-    <%= image_tag 'branding/linkedin/In-2C-28px-TM.png' %>
-  <% end %>
+  <%= menu_item(image_tag('branding/facebook/FB-f-Logo__blue_29.png'),
+                ENV.fetch('SOCIAL_MEDIA_URL_FACEBOOK'), target: :_blank) %>
+  <%= menu_item(image_tag('branding/twitter/Twitter_Social_Icon_Rounded_Square_Color-29px.png'),
+                ENV.fetch('SOCIAL_MEDIA_URL_TWITTER'), target: :_blank) %>
+  <%= menu_item(image_tag('branding/linkedin/In-2C-28px-TM.png'),
+                ENV.fetch('SOCIAL_MEDIA_URL_LINKEDIN'), target: :_blank) %>
   <%= menu_item("Blog", blog_path) %>
   <%= menu_item("Contact", contact_path) %>
   <%= menu_item("Newsletter Signup", newsletter_signup_path) %>
