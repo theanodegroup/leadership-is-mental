@@ -9,9 +9,7 @@
     </div>
     <% if contact_errors[:name] %>
       <div class='col-lg-9'>
-        <% contact_errors[:name].each do |error| %>
-          <p class='text-danger'>Name <%= error %></p>
-        <% end %>
+        <span class='text-danger'>Name <%= contact_errors[:name].first %></span>
       </div>
     <% end %>
   </div>
@@ -22,9 +20,7 @@
 
     <% if contact_errors[:email] %>
       <div class="col-lg-9">
-        <% contact_errors[:email].each do |error| %>
-          <p class='text-danger'>Email <%= error %></p>
-        <% end %>
+        <span class='text-danger'>Email <%= contact_errors[:email].first %></span>
       </div>
     <% end %>
   </div>
