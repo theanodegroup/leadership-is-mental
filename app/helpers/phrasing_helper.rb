@@ -13,4 +13,12 @@ module PhrasingHelper
   def phrase_lookup(key)
     PhrasingPhrase.find_by(locale: I18n.locale, key: key).try(:value)
   end
+
+  def editable_type(phrase)
+    if phrase.downcase.starts_with?('quill')
+      'quill'
+    else
+      'text'
+    end
+  end
 end

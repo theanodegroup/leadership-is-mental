@@ -1,18 +1,19 @@
 <div class="panel panel-default">
   <% if defined? phrase_heading %>
     <div class="panel-heading">
-      <%= render partial: 'editable/text', locals: { phrase: phrase_heading } %>
+      <%= render partial: "editable/#{editable_type(phrase_heading)}",
+                 locals: { phrase: phrase_heading } %>
     </div>
   <% end %>
   <% if defined? phrase_heading %>
     <div class="panel-body">
-      <%= render partial: 'editable/text', locals: { phrase: phrase_body } %>
+      <%= render partial: "editable/#{editable_type(phrase_body)}",
+                 locals: { phrase: phrase_body } %>
     </div>
   <% end %>
   <% if defined?(footer_text) && defined?(footer_source) %>
     <div class="panel-footer text-right">
       <%= link_to footer_text, footer_source %>
-
     </div>
   <% end %>
 </div>

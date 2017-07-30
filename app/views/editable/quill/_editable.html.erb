@@ -1,0 +1,5 @@
+<%= form_tag quill_update_path do %>
+  <%= hidden_field_tag :key, phrase %>
+  <%= text_field_tag :value, phrase_lookup(phrase), class: 'quill_container' %>
+  <%= submit_tag "save", class: 'btn btn-primary' %>
+<% end %>
