@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require phrasing
+//= require quill.global
 //= require_tree .

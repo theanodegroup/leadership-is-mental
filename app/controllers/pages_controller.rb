@@ -1,4 +1,14 @@
 class PagesController < ApplicationController
+  def quill_update
+    key = params[:key]
+    value = params[:value]
+
+    phrase = PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key)
+    phrase.update(value: value)
+    redirect_to :back
+  end
+
+  # Site Pages
   def about
   end
 
