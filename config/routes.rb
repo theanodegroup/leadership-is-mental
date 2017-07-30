@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :data
+  resources :data
   resources :contacts
   get 'pages/blog', to: 'pages#blog', as: :blog
   get 'pages/contact', to: 'pages#contact', as: :contact_us
