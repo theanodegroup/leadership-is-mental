@@ -8,6 +8,16 @@ class PagesController < ApplicationController
     redirect_to :back
   end
 
+  def show_quill
+    @phrase = params[:phrase]
+    @value = PhrasingPhrase.find_or_initialize_by(locale: I18n.locale, key: @phrase).value
+
+
+    respond_to do |format|
+      format.js { render 'editable/quill/edit'}
+    end
+  end
+
   # Site Pages
   def about
   end

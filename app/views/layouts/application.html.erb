@@ -37,34 +37,55 @@
       <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
-      <% @contact = Contact.new if @contact.nil? %>
-      <%= render partial: 'newsletter/modal', locals: {
-        body_partial: 'new', modal_id: 'newsletter_signup_new'
-      } %>
-      <%= render partial: 'newsletter/modal', locals: {
-        body_partial: 'success', modal_id: 'newsletter_signup_success'
-      } %>
 
-      <script>
-        <% if @show_newsletter_signup  %>
-          $('#newsletter_signup_new').modal('show');
-        <% end %>
+    <div id='quill_modal_container'><%# This is replaced with the edit with quill modal %></div>
 
-        $('.close_newsletter_modal').click(function() {
-          $('#newsletter_signup_new').modal('hide');
-          $('#newsletter_signup_success').modal('hide');
-          return false;
-        });
+    <% @contact = Contact.new if @contact.nil? %>
+    <%= render partial: 'newsletter/modal', locals: {
+      body_partial: 'new', modal_id: 'newsletter_signup_new'
+    } %>
+    <%= render partial: 'newsletter/modal', locals: {
+      body_partial: 'success', modal_id: 'newsletter_signup_success'
+    } %>
 
-        $('.show_newsletter_modal_new').click(function() {
-          $('#newsletter_signup_new').modal('show');
-          return false;
-        });
+    <script>
+      <% if @show_newsletter_signup  %>
+        $('#newsletter_signup_new').modal('show');
+      <% end %>
 
-        $('.show_newsletter_modal_success').click(function() {
-          $('#newsletter_signup_success').modal('show');
-          return false;
-        });
-      </script>
+      $('.close_newsletter_modal').click(function() {
+        $('#newsletter_signup_new').modal('hide');
+        $('#newsletter_signup_success').modal('hide');
+        return false;
+      });
+
+      $('.show_newsletter_modal_new').click(function() {
+        $('#newsletter_signup_new').modal('show');
+        return false;
+      });
+
+      $('.show_newsletter_modal_success').click(function() {
+        $('#newsletter_signup_success').modal('show');
+        return false;
+      });
+
+      var defaults = {
+        theme: 'snow',
+        modules: {
+          toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'color': [] }, { 'background': [] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'indent': '-1'}, { 'indent': '+1' }], ['image'],
+            ['clean']
+          ]
+        }
+      };
+
+      //This is the global config object
+      Quilljs.setDefaults(defaults)
+    </script>
   </body>
 </html>
