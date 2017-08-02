@@ -1,10 +1,10 @@
 <% js_phrase = phrase.gsub('/', '-') %>
 <div id='quill-<%= js_phrase %>'>
   <% if can_edit_phrases? %>
-    <div id='quill-<%= js_phrase %>-uneditable'>
+    <div class='quill-uneditable'>
       <%= render partial: 'editable/quill/uneditable', locals: {phrase: phrase} %>
     </div>
-    <div id='quill-<%= js_phrase %>-editable'>
+    <div class='quill-editable'>
       <%= render partial: 'editable/quill/editable', locals: {phrase: phrase} %>
     </div>
   <% else %>
@@ -26,38 +26,15 @@
       console.log('Status | ' + phrasing_last_value + " | " + value)
       if (value != phrasing_last_value) {
         if (value == 'true') {
-          console.log('A')
-          $('#quill-<%= js_phrase %>-uneditable').hide();
-          $('#quill-<%= js_phrase %>-editable').show();
-          console.log('B')
+          $('.quill-uneditable').hide();
+          $('.quill-editable').show();
         } else {
-          console.log('C')
-          $('#quill-<%= js_phrase %>-uneditable').show();
-          $('#quill-<%= js_phrase %>-editable').hide();
-          console.log('D')
+          $('.quill-uneditable').show();
+          $('.quill-editable').hide();
         }
         phrasing_last_value = value
       }
 
     }, 500); // Execute somethingElse() every 2 seconds.
-
-
-    var defaults = {
-      theme: 'snow',
-      modules: {
-        toolbar: [
-          [{ 'header': [1, 2, 3, false] }],
-          [{ 'color': [] }, { 'background': [] }],
-          ['bold', 'italic', 'underline', 'strike'],
-          ['blockquote', 'code-block'],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],['image'],
-          ['clean']
-        ]
-      }
-    };
-
-    //This is the global config object
-    Quilljs.setDefaults(defaults)
   </script>
 <% end %>
