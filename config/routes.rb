@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'pages/update/quill', to: 'pages#quill_update', as: :quill_update
+  post 'pages/show/quill', to: 'pages#show_quill', as: :show_quill_editor
 
   resources :contacts
   get 'pages/blog', to: 'pages#blog', as: :blog

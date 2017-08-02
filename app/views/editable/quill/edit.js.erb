@@ -1,0 +1,28 @@
+$( "#quill_modal_container" ).html( "<%= j render partial: 'editable/quill/modal' %>" );
+
+$('#quill_modal').modal({
+  backdrop: 'static'
+});
+$('#quill_modal').modal('show');
+
+var quill = new Quill('#quill_container', {
+  modules: {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      [{ 'color': [] }, { 'background': [] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }], ['image'],
+      ['clean']
+    ]
+  },
+  theme: 'snow'  // or 'bubble'
+});
+
+quill.clipboard.dangerouslyPasteHTML(0, '<%= sanitize(@value) %>')
+
+
+$( "#quill-form" ).submit(function( event ) {
+  $('#value').val($('#quill_container > .ql-editor > p').html());
+});
