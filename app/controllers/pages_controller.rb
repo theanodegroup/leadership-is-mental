@@ -5,7 +5,9 @@ class PagesController < ApplicationController
 
     phrase = PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key)
     phrase.update(value: value)
-    redirect_to :back
+    respond_to do |format|
+      format.js { render 'editable/quill/update'}
+    end
   end
 
   def show_quill

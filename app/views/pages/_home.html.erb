@@ -1,0 +1,30 @@
+<% partial_path = "pages/home" %>
+<%= render partial: 'editable/text', locals: { phrase: 'home/brand_statement' } %>
+<div class='clearfix'></div>
+<br>
+<%= render partial: "#{partial_path}/carousel" %>
+
+<br>
+<br>
+<%= render partial: "#{partial_path}/three_panels" %>
+<div class='clearfix'></div>
+
+<br>
+<div class='col-md-12'>
+  <%= render partial: 'editable/panel', locals: {
+    phrase_heading: "#{partial_path}/panel/wide/heading",
+    phrase_body: "quill/#{partial_path}/panel/wide/heading",
+  } %>
+</div>
+<div class='clearfix'></div>
+
+<br>
+<% 3.times do |i| %>
+  <div class='col-md-4'>
+    <%= render partial: 'editable/panel', locals: {
+      phrase_heading: "home/panel/feed_#{i + 1}/heading",
+      phrase_body: "home/panel/feed_#{i + 1}/body",
+    } %>
+  </div>
+<% end %>
+<div class='clearfix'></div>
