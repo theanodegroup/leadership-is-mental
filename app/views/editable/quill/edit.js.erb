@@ -23,5 +23,5 @@ var quill = new Quill('#quill_container', {
 quill.clipboard.dangerouslyPasteHTML(0, '<%= raw @value %>')
 
 $( "#quill-form" ).submit(function( event ) {
-  $('#value').val($('#quill_container > .ql-editor > p').html());
+  $('#value').val($('#quill_container > .ql-editor').html());
 });
