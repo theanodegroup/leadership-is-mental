@@ -20,8 +20,7 @@ var quill = new Quill('#quill_container', {
   theme: 'snow'  // or 'bubble'
 });
 
-quill.clipboard.dangerouslyPasteHTML(0, '<%= sanitize(@value) %>')
-
+quill.clipboard.dangerouslyPasteHTML(0, '<%= raw @value %>')
 
 $( "#quill-form" ).submit(function( event ) {
   $('#value').val($('#quill_container > .ql-editor > p').html());
