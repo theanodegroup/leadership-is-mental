@@ -1,5 +1,5 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
-     data-interval="<%= 10000 %>">
+     data-interval="<%= ENV.fetch('HOME_CAROUSEL_INTERVAL_TIME_MILLISECONDS') %>">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
