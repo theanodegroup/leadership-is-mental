@@ -25,3 +25,5 @@ quill.clipboard.dangerouslyPasteHTML(0, '<%= raw @value %>')
 $( "#quill-form" ).submit(function( event ) {
   $('#value').val($('#quill_container > .ql-editor').html());
 });
+
+$('.quill-uneditable').find('p').find('img').css({"max-width": '100%', "height": 'auto'})

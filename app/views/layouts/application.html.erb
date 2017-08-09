@@ -86,6 +86,9 @@
 
       //This is the global config object
       Quilljs.setDefaults(defaults)
+
+      <%# Make quill images responsive %>
+      $('.quill-uneditable').find('p').find('img').css({"max-width": '100%', "height": 'auto'})
     </script>
   </body>
 </html>
