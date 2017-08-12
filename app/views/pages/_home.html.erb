@@ -2,7 +2,9 @@
 <%= render partial: 'editable/text', locals: { phrase: 'home/brand_statement' } %>
 <div class='clearfix'></div>
 <br>
-<%= render partial: "#{partial_path}/carousel" %>
+<%= render partial: "editable/carousel", locals: {
+  phrase: "#{partial_path}/carousel/top"
+} %>
 
 <br>
 <br>

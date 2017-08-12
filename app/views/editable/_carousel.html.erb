@@ -1,0 +1,48 @@
+<% js_phrase = phrase.gsub('/', '-') %>
+<div id="<%= js_phrase %>" class="carousel slide" data-ride="carousel"
+     data-interval="<%= ENV.fetch('HOME_CAROUSEL_INTERVAL_TIME_MILLISECONDS') %>">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#<%= js_phrase %>" data-slide-to="0" class="active"></li>
+    <li data-target="#<%= js_phrase %>" data-slide-to="1"></li>
+    <li data-target="#<%= js_phrase %>" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+1" %>
+      <div class="carousel-caption">
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+      </div>
+    </div>
+    <div class="item">
+      <div class="carousel-caption">
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+      </div>
+      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+2" %>
+      <div class="carousel-caption">
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+      </div>
+    </div>
+    <div class="item">
+      <div class="carousel-caption">
+        <h3>&nbsp</h3>
+      </div>
+      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+3" %>
+      <div class="carousel-caption">
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#<%= js_phrase %>" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#<%= js_phrase %>" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

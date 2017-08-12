@@ -5,3 +5,14 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/sprites
   */
+
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: 0;
+    bottom: auto;
+    color: #333;
+    padding: 0;
+}
