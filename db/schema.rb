@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20170812234501) do
   enable_extension "plpgsql"
 
   create_table "carousel_images", force: :cascade do |t|
+    t.string   "carousel"
     t.string   "image_source_url"
     t.string   "image_link_url"
-    t.string   "carousel"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
