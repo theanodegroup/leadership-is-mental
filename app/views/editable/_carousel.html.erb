@@ -6,21 +6,17 @@
   <ol class="carousel-indicators">
     <% carousel_images.size.times do |index| %>
     <li data-target="#<%= js_phrase %>" data-slide-to="<%= index %>"
-        class="<%= "active" if index == 0 %>"></li>
+      class="<%= "active" if index == 0 %>"></li>
     <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+1" %>
-    </div>
-    <div class="item">
-      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+2" %>
-    </div>
-    <div class="item">
-      <%= image_tag "https://via.placeholder.com/700x400&text=Carousel+image+3" %>
-    </div>
+    <% carousel_images.each.with_index do |carousel_image, index| %>
+      <div id='<%= js_phrase %>-item-<%= index %>' class="item <%= "active" if index == 0 %>" style='cursor: pointer;'>
+        <%= image_tag carousel_image.image_source_url %>
+      </div>
+    <% end %>
   </div>
 
   <!-- Controls -->
@@ -33,3 +29,13 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<script>
+  <% carousel_images.each.with_index do |carousel_image, index| %>
+    $('#<%= js_phrase %>-item-<%= index %>').click(function() {
+      console.log("Index Clicked: " + <%= index %>);
+      var win = window.open('<%= carousel_image.image_link_url %>','_blank');
+      win.focus();
+    });
+  <% end %>
+</script>
