@@ -1,0 +1,41 @@
+<% js_phrase = phrase.gsub('/', '-') %>
+<% carousel_images = CarouselImage.where(carousel: CarouselImage::CAROUSEL_HOME_TOP) %>
+<div id="<%= js_phrase %>" class="carousel slide" data-ride="carousel"
+     data-interval="<%= ENV.fetch('HOME_CAROUSEL_INTERVAL_TIME_MILLISECONDS') %>">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% carousel_images.size.times do |index| %>
+    <li data-target="#<%= js_phrase %>" data-slide-to="<%= index %>"
+      class="<%= "active" if index == 0 %>"></li>
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% carousel_images.each.with_index do |carousel_image, index| %>
+      <div id='<%= js_phrase %>-item-<%= index %>' class="item <%= "active" if index == 0 %>" style='cursor: pointer;'>
+        <%= image_tag carousel_image.image_source_url %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#<%= js_phrase %>" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#<%= js_phrase %>" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<script>
+  <% carousel_images.each.with_index do |carousel_image, index| %>
+    $('#<%= js_phrase %>-item-<%= index %>').click(function() {
+      console.log("Index Clicked: " + <%= index %>);
+      var win = window.open('<%= carousel_image.image_link_url %>','_blank');
+      win.focus();
+    });
+  <% end %>
+</script>
