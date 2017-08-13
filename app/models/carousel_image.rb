@@ -22,8 +22,8 @@ class CarouselImage < ActiveRecord::Base
     num_positions = CarouselImage.all.size + 1
     num_positions.times.map do |i|
       index = "Insert before #{i + 1}"
-      index = i == 0 ? "Make First" : index
       index = i == (num_positions - 1) ? "Make Last" : index
+      index = i == 0 ? "Make First" : index
       position = (i + 1) * POSITION_OFFSET - POSITION_HALF_OFFSET
       [index, position]
     end
