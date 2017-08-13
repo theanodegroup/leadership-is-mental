@@ -69,6 +69,6 @@ class CarouselImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def carousel_image_params
-      params.fetch(:carousel_image, {})
+      params.require(:carousel_image).permit(:carousel, :image_source_url, :image_link_url)
     end
 end
