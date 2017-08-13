@@ -12,8 +12,15 @@ class CarouselImage < ActiveRecord::Base
   default_scope { order(position: :asc, updated_at: :desc) }
 
   def self.update_positions
-    CarouselImage.all.each.with_index(1) do |carousel_image, index|
-      carousel_image.update(position: index * POSITION_OFFSET)
+    CarouselImage.all.pluck(:carousel).uniq.each do |carousel|
+      self.update_positions_carousel(carousel)
+    end
+  end
+
+  def self.update_positions_carousel(carousel)
+    CarouselImage.where(carousel: carousel).each.with_index(1) do |carousel_image, index|
+      new_position = index * POSITION_OFFSET
+      carousel_image.update(position: new_position) if carousel_image.position != new_position
     end
   end
 
