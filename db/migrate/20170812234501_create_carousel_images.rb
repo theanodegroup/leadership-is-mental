@@ -2,6 +2,7 @@ class CreateCarouselImages < ActiveRecord::Migration
   def change
     create_table :carousel_images do |t|
       t.string :carousel
+      t.integer :position
       t.string :image_source_url
       t.string :image_link_url
 

@@ -28,6 +28,7 @@ class CarouselImagesController < ApplicationController
 
     respond_to do |format|
       if @carousel_image.save
+        CarouselImage.update_positions
         format.html { redirect_to @carousel_image, notice: 'Carousel image was successfully created.' }
         format.json { render :show, status: :created, location: @carousel_image }
       else
@@ -42,6 +43,7 @@ class CarouselImagesController < ApplicationController
   def update
     respond_to do |format|
       if @carousel_image.update(carousel_image_params)
+        CarouselImage.update_positions
         format.html { redirect_to @carousel_image, notice: 'Carousel image was successfully updated.' }
         format.json { render :show, status: :ok, location: @carousel_image }
       else
@@ -69,6 +71,6 @@ class CarouselImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def carousel_image_params
-      params.require(:carousel_image).permit(:carousel, :image_source_url, :image_link_url)
+      params.require(:carousel_image).permit(:carousel, :image_source_url, :image_link_url, :position)
     end
 end
