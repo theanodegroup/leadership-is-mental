@@ -1,5 +1,5 @@
 <% js_phrase = phrase.gsub('/', '-') %>
-<% carousel_images = CarouselImage.where(carousel: CarouselImage::CAROUSEL_HOME_TOP) %>
+<% carousel_images = CarouselImage.where(carousel: CarouselImage::CAROUSELS[CarouselImage::CAROUSEL_HOME_TOP]) %>
 <div id="<%= js_phrase %>" class="carousel slide" data-ride="carousel"
      data-interval="<%= ENV.fetch('HOME_CAROUSEL_INTERVAL_TIME_MILLISECONDS') %>">
   <!-- Indicators -->
