@@ -1,2 +1,15 @@
-<h1>Pages#contact</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+<%- model_class = Message -%>
+<% partial_path = "pages/home" %>
+<div class="page-header">
+  <h1>Contact</h1>
+</div>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <p>Discover what's in it for you...</p>
+    <%= render partial: 'messages/form' %>
+  </div>
+  <div class='col-md-6'>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right" } %>
+  </div>
+</div>

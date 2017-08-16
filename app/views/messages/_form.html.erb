@@ -1,0 +1,58 @@
+<%= form_for @message, :html => { :class => "form-horizontal message" } do |f| %>
+
+  <% if @message.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-lg-10">
+      <%= f.text_field :name,
+                       placeholder: 'Enter your name here*',
+                       :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-10">
+      <%= f.text_field :email,
+                       placeholder: 'Enter your email here*',
+                       :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:email) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-10">
+      <%= f.text_field :phone,
+                       placeholder: 'Enter your phone here (optional)',
+                       :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:phone) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-10">
+      <% max_length = ENV['CONTACT_FORM_CONTENT_MAX_LENGTH'] %>
+      <%= f.text_area :content, maxlength: (max_length.present? ? max_length.to_i : 500 ),
+                      placeholder: 'Enter your message here. Maximium of 500*',
+                      :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:content) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-10">
+      <%= f.submit "SUBMIT", :class => 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+
+<% end %>

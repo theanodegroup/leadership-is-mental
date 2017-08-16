@@ -40,6 +40,7 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @message = Message.new
   end
 
   def newsletter_signup
@@ -55,8 +56,5 @@ class PagesController < ApplicationController
   end
 
   def sitemap
-  end
-
-  def contact
   end
 end

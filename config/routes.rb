@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :carousel_images
   post 'pages/update/quill', to: 'pages#quill_update', as: :quill_update
   post 'pages/show/quill', to: 'pages#show_quill', as: :show_quill_editor
 
-  resources :contacts
+  resources :contacts, path: 'newsletter_signups'
   get 'pages/blog', to: 'pages#blog', as: :blog
   get 'pages/contact', to: 'pages#contact', as: :contact_us
   get 'pages/newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
