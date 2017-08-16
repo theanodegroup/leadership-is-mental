@@ -25,11 +25,28 @@ en:
       contact:
         name: "Name"
         email: "Email"
+    models:
+        contact:
+          one: 'Newsletter Signup'
+          other: 'Newsletter Signups'
     errors:
+      format: "%{message}"
       models:
         contact:
           attributes:
             email:
-              blank: "is required"
+              blank: "Email is required"
+              bad_email: "Please enter a valid email address."
             name:
-              blank: "is required"
+              blank: "Name is required"
+        message:
+          attributes:
+            name:
+              blank: "Please enter your name."
+            email:
+              blank: "Email is required"
+              bad_email: "Please enter a valid email address."
+            phone:
+              bad_phone: "Please enter a valid phone number."
+            content:
+              blank: "Message is required. Please enter a valid message."
