@@ -1,2 +1,13 @@
-<h1>Pages#what_you_get</h1>
-<p>Find me in app/views/pages/what_you_get.html.erb</p>
+<% partial_path = "pages/whatyouget" %>
+<div class="page-header">
+  <h1>Whhat you get</h1>
+</div>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/left" } %>
+  </div>
+  <div class='col-md-6'>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right" } %>
+  </div>
+</div>
