@@ -1,2 +1,17 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<% partial_path = "pages/about" %>
+<div class="page-header">
+  <h1>About</h1>
+</div>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right/top" } %>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right/bottom" } %>
+  </div>
+  <div class='col-md-6'>
+  <%= render partial: 'editable/panel', locals: {
+    phrase_heading: "#{partial_path}/panel/expert/heading",
+    phrase_body: "quill/#{partial_path}/panel/expert/body",
+  } %>
+  </div>
+</div>

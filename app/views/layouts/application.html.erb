@@ -95,6 +95,25 @@
 
       <%# Make quill images responsive %>
       $('.quill-uneditable').find('p').find('img').css({"max-width": '100%', "height": 'auto'})
+
+      <%# Detect attr change that shows editing has been enabled/disabled %>
+      phrasing_last_value = undefined
+      setInterval(function () {
+        var value = $('#phrasing-status > span').attr('contenteditable')
+
+        console.log('Status | ' + phrasing_last_value + " | " + value)
+        if (value != phrasing_last_value) {
+          if (value == 'true') {
+            $('.quill-uneditable').hide();
+            $('.quill-editable').show();
+          } else {
+            $('.quill-uneditable').show();
+            $('.quill-editable').hide();
+          }
+          phrasing_last_value = value
+        }
+
+      }, 500); // Execute somethingElse() every 2 seconds.
     </script>
   </body>
 </html>
