@@ -1,6 +1,7 @@
-<% partial_path = "pages/contact" %>
+<% partial_path = "pages/#{@page_name}" %>
 
-<% content_for :page_header, "Contact" %>
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>
 
 <div class='row'>
   <div class='col-md-6'>

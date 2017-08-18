@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  before_action :set_pages_vars, except: [:quill_update, :show_quill, :newsletter_signup]
+
+  # Quill
   def quill_update
     key = params[:key]
     value = params[:value]
@@ -18,6 +21,10 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.js { render 'editable/quill/edit'}
     end
+  end
+
+  # AJAX
+  def newsletter_signup
   end
 
   # Site Pages
@@ -40,10 +47,8 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @breadcrumb = :contact_us # Override
     @message = Message.new
-  end
-
-  def newsletter_signup
   end
 
   def disclaimer
@@ -56,5 +61,12 @@ class PagesController < ApplicationController
   end
 
   def sitemap
+  end
+
+private
+  def set_pages_vars
+    @page_name = action_name.to_sym
+    @title = action_name.titleize
+    @breadcrumb = action_name.to_sym
   end
 end

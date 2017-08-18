@@ -1,2 +1,4 @@
-<h1>Pages#free_ebook</h1>
-<p>Find me in app/views/pages/free_ebook.html.erb</p>
+<% partial_path = "pages/#{@page_name}" %>
+
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>
