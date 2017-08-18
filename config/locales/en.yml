@@ -49,5 +49,4 @@ en:
             phone:
               invalid: "Please enter a valid phone number."
             content:
-              blank: "Message is required. Please enter a valid message."
-
+              blank: "Please enter your message."
