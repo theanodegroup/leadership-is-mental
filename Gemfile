@@ -28,6 +28,7 @@ gem 'newrelic_rpm'
 
 # Styling
 gem "twitter-bootstrap-rails"
+gem "gretel" # Breadcrumbs
 
 # User Management
 gem 'devise'

@@ -1,2 +1,4 @@
-<h1>Pages#sitemap</h1>
-<p>Find me in app/views/pages/sitemap.html.erb</p>
+<% partial_path = "pages/#{@page_name}" %>
+
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>

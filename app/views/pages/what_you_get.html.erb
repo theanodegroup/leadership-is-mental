@@ -1,7 +1,7 @@
-<% partial_path = "pages/whatyouget" %>
-<div class="page-header">
-  <h1>Whhat you get</h1>
-</div>
+<% partial_path = "pages/#{@page_name}" %>
+
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>
 
 <div class='row'>
   <div class='col-md-6'>
