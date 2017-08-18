@@ -36,7 +36,7 @@ en:
           attributes:
             email:
               blank: "Email is required"
-              bad_email: "Please enter a valid email address."
+              invalid: "Please enter a valid email address."
             name:
               blank: "Name is required"
         message:
@@ -45,8 +45,8 @@ en:
               blank: "Please enter your name."
             email:
               blank: "Email is required"
-              bad_email: "Please enter a valid email address."
+              invalid: "Please enter a valid email address."
             phone:
-              bad_phone: "Please enter a valid phone number."
+              invalid: "Please enter a valid phone number."
             content:
               blank: "Message is required. Please enter a valid message."
