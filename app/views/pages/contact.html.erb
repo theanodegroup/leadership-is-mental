@@ -1,13 +1,13 @@
-<%- model_class = Message -%>
 <% partial_path = "pages/contact" %>
-<div class="page-header">
-  <h1>Contact</h1>
-</div>
+
+<% content_for :page_header, "Contact" %>
 
 <div class='row'>
   <div class='col-md-6'>
-    <p>Discover what's in it for you...</p>
-    <%= render partial: 'messages/form' %>
+    <div id='message-form'>
+      <p>Discover what's in it for you...</p>
+      <%= render partial: 'messages/form' %>
+    </div>
   </div>
   <div class='col-md-6'>
     <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right/upper" } %>

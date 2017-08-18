@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
   # Format Validations
   validates :content, format: {
     with: /\A[a-zA-Z0-9!#$%&*()-_:";'?\/,.\s]*\z/,
-    message: "Only alphanumeric characters, whitespace and !#$%&*()-_:\";'/,.]*$ are allowed"
+    message: "Only alphanumeric characters, whitespace and !#$%&*()-_:\";'/,.]*$ are allowed."
   }
 
   validates :phone, phone: true, allow_blank: true
