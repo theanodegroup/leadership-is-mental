@@ -10,6 +10,8 @@
     <%= render partial: 'messages/form' %>
   </div>
   <div class='col-md-6'>
-    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right" } %>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right/upper" } %>
+    <%= render partial: 'pages/contact/map' %>
+    <%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/col/right/lower" } %>
   </div>
 </div>
