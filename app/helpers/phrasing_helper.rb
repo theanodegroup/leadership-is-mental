@@ -7,7 +7,7 @@ module PhrasingHelper
   # end
 
   def can_edit_phrases?
-    true
+    user_signed_in?
   end
 
   def phrase_lookup(key)

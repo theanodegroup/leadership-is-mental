@@ -35,10 +35,10 @@ en:
         contact:
           attributes:
             email:
-              blank: "Email is required"
+              blank: "Please enter your name."
               invalid: "Please enter a valid email address."
             name:
-              blank: "Name is required"
+              blank: "Please enter your email."
         message:
           attributes:
             name:
