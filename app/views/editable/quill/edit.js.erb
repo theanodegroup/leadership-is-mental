@@ -1,10 +1,14 @@
+console.log("Rendering Quill Modal")
 $( "#quill_modal_container" ).html( "<%= j render partial: 'editable/quill/modal' %>" );
 
+console.log("Setting Quill modal backdrop")
 $('#quill_modal').modal({
   backdrop: 'static'
 });
+console.log("Displaying Quill Modal")
 $('#quill_modal').modal('show');
 
+console.log("Rendering Quill editor")
 var quill = new Quill('#quill_container', {
   modules: {
     toolbar: [
@@ -21,10 +25,13 @@ var quill = new Quill('#quill_container', {
   theme: 'snow'  // or 'bubble'
 });
 
+console.log("Adding Value to Quill")
 quill.clipboard.dangerouslyPasteHTML(0, '<%= raw @value %>')
 
+console.log("Adding Value to Quill Form Submit")
 $( "#quill-form" ).submit(function( event ) {
   $('#value').val($('#quill_container > .ql-editor').html());
 });
 
+console.log("Making Quill uneditable images responsive")
 $('.quill-uneditable').find('p').find('img').css({"max-width": '100%', "height": 'auto'})
