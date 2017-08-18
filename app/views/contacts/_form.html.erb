@@ -9,7 +9,7 @@
     </div>
     <% if contact_errors[:name] && contact_errors[:name].first.present? %>
       <div class='col-lg-9'>
-        <span class='text-danger'>Name <%= contact_errors[:name].first %></span>
+        <span class='text-danger'><%= contact_errors[:name].first %></span>
       </div>
     <% end %>
   </div>
@@ -20,7 +20,7 @@
 
     <% if contact_errors[:email] && contact_errors[:email].first.present? %>
       <div class="col-lg-9">
-        <span class='text-danger'>Email <%= contact_errors[:email].first %></span>
+        <span class='text-danger'><%= contact_errors[:email].first %></span>
       </div>
     <% end %>
   </div>

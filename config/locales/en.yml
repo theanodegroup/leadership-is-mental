@@ -44,9 +44,10 @@ en:
             name:
               blank: "Please enter your name."
             email:
-              blank: "Email is required"
+              blank: "Please enter your email."
               invalid: "Please enter a valid email address."
             phone:
               invalid: "Please enter a valid phone number."
             content:
               blank: "Message is required. Please enter a valid message."
+
