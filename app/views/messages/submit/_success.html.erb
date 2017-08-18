@@ -1,0 +1,11 @@
+<% partial_path = "messages/submit" %>
+<p class='text-center'>
+  Thank you for getting in touch with us.
+  we have received your query.
+</p>
+<br>
+<p class='text-center'>
+  We will be in touch with you within 3-5 buisness days.
+</p>
+
+<%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/success" } %>

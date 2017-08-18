@@ -4,5 +4,12 @@ class Message < ActiveRecord::Base
   validates_length_of :name, :maximum => 100
   validates_length_of :email, :maximum => 120
   validates_length_of :content, :maximum => 500
-  validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, }, allow_blank: true
+
+  # Format Validations
+  validates :content, format: {
+    with: /\A[a-zA-Z0-9!#$%&*()-_:";'?\/,.\s]*\z/,
+    message: "Only alphanumeric characters, whitespace and !#$%&*()-_:\";'/,.]*$ are allowed."
+  }
+
+  validates :phone, phone: true, allow_blank: true
 end

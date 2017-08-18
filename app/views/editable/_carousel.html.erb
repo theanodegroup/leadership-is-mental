@@ -2,13 +2,6 @@
 <% carousel_images = CarouselImage.where(carousel: CarouselImage::CAROUSELS[CarouselImage::CAROUSEL_HOME_TOP]) %>
 <div id="<%= js_phrase %>" class="carousel slide" data-ride="carousel"
      data-interval="<%= ENV.fetch('HOME_CAROUSEL_INTERVAL_TIME_MILLISECONDS') %>">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% carousel_images.size.times do |index| %>
-    <li data-target="#<%= js_phrase %>" data-slide-to="<%= index %>"
-      class="<%= "active" if index == 0 %>"></li>
-    <% end %>
-  </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
