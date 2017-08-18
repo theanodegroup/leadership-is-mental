@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :messages
   resources :carousel_images
   post 'pages/update/quill', to: 'pages#quill_update', as: :quill_update
