@@ -58,6 +58,10 @@
 
       <% end %>
 
+
+      <%# Make quill images responsive %>
+      $('.quill').find('p').find('img').css({"max-width": '100%', "height": 'auto'})
+
       $('.close_newsletter_modal').click(function() {
         $('#newsletter_signup_new').modal('hide');
         $('#newsletter_signup_success').modal('hide');
@@ -94,9 +98,6 @@
 
       //This is the global config object
       Quilljs.setDefaults(defaults)
-
-      <%# Make quill images responsive %>
-      $('.quill-uneditable').find('p').find('img').css({"max-width": '100%', "height": 'auto'})
 
       <%# Detect attr change that shows editing has been enabled/disabled %>
       phrasing_last_value = undefined
