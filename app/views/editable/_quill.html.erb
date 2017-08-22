@@ -1,4 +1,4 @@
-<% js_phrase = phrase.gsub('/', '-') %>
+<% js_phrase = phrase.gsub('/', '-').gsub('_', '-') %>
 <div id='quill-<%= js_phrase %>' class='quill'>
   <% if can_edit_phrases? %>
     <div class='quill-uneditable'>
