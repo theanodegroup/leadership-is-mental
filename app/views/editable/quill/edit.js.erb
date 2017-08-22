@@ -26,7 +26,7 @@ var quill = new Quill('#quill_container', {
 });
 
 console.log("Adding Value to Quill")
-quill.clipboard.dangerouslyPasteHTML(0, '<%= raw @value %>')
+quill.clipboard.dangerouslyPasteHTML(0, '<%= raw j @value %>')
 
 console.log("Adding Value to Quill Form Submit")
 $( "#quill-form" ).submit(function( event ) {
