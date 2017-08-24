@@ -1,0 +1,1 @@
+json.partial! "leadership_jobs/leadership_job", leadership_job: @leadership_job

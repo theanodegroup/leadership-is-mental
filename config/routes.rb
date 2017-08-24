@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leadership_jobs
   devise_for :users
   resources :messages
   resources :carousel_images

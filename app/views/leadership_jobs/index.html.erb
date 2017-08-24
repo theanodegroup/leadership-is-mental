@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Leadership Jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Pubdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leadership_jobs.each do |leadership_job| %>
+      <tr>
+        <td><%= leadership_job.title %></td>
+        <td><%= leadership_job.description %></td>
+        <td><%= leadership_job.link %></td>
+        <td><%= leadership_job.pubdate %></td>
+        <td><%= link_to 'Show', leadership_job %></td>
+        <td><%= link_to 'Edit', edit_leadership_job_path(leadership_job) %></td>
+        <td><%= link_to 'Destroy', leadership_job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leadership job', new_leadership_job_path %>

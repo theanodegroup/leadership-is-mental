@@ -1,0 +1,1 @@
+json.array! @leadership_jobs, partial: 'leadership_jobs/leadership_job', as: :leadership_job
