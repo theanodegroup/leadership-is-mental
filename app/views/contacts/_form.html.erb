@@ -1,5 +1,6 @@
 <%= form_for @contact, remote: true,
              :html => { :class => "form-horizontal contact text-center" } do |f| %>
+  <%= f.hidden_field :ebook, value: @ebook || @contact.ebook %>
 
   <% contact_errors = @contact.errors.to_hash %>
 
