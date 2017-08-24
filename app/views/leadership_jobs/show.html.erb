@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @leadership_job.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @leadership_job.description %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @leadership_job.link %>
+</p>
+
+<p>
+  <strong>Pubdate:</strong>
+  <%= @leadership_job.pubdate %>
+</p>
+
+<%= link_to 'Edit', edit_leadership_job_path(@leadership_job) %> |
+<%= link_to 'Back', leadership_jobs_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leadership_jobs
   devise_for :users
   resources :messages
   resources :carousel_images
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'pages/about', to: 'pages#about', as: :about
   get 'pages/what-you-get', to: 'pages#what_you_get', as: :what_you_get
-  get 'pages/leadership-jobs', to: 'pages#leadership_jobs', as: :leadership_jobs
+  get 'pages/leadership-jobs', to: 'pages#leadership_jobs', as: :leadership_jobs_page
   get 'pages/events', to: 'pages#events', as: :events
   get 'pages/free-ebook', to: 'pages#free_ebook', as: :free_ebook
 
