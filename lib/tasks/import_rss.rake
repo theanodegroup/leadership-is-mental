@@ -4,7 +4,7 @@ namespace :import_rss do
     require 'rss'
     puts "Importing Jobs via RSS"
 
-    rss = RSS::Parser.parse('http://www.indeed.ca/rss?q=millwright&l=Toronto%2C+ON&sort=date', false)
+    rss = RSS::Parser.parse('http://rss.indeed.com/rss?q=leadership', false)
     rss.items.each do |item|
       begin
         LeadershipJob.create({
@@ -27,5 +27,6 @@ namespace :import_rss do
     jobs_to_save = LeadershipJob.all.limit(max_jobs)
     LeadershipJob.where.not(id: jobs_to_save).delete_all
     puts "There are now at most #{max_jobs} leadership jobs"
+    puts "Number of leadership jobs: #{LeadershipJob.all.size}"
   end
 end
