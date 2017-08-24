@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170824004045) do
     t.string   "title"
     t.text     "description"
     t.string   "link"
-    t.date     "pub_date"
+    t.datetime "pub_date"
     t.text     "source"
     t.string   "guid"
     t.datetime "created_at",  null: false
