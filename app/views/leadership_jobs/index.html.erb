@@ -5,37 +5,32 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:link) %></th>
+      <th class='readmore'><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:pub_date) %></th>
-      <th><%= model_class.human_attribute_name(:source) %></th>
-      <th><%= model_class.human_attribute_name(:guid) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
+    <% preview_characters = 100 %>
     <% @leadership_jobs.each do |leadership_job| %>
       <tr>
-        <td><%= link_to leadership_job.id, leadership_job_path(leadership_job) %></td>
-        <td><%= leadership_job.title %></td>
-        <td><%= leadership_job.description %></td>
-        <td><%= leadership_job.link %></td>
-        <td><%= leadership_job.pub_date %></td>
-        <td><%= leadership_job.source %></td>
-        <td><%= leadership_job.guid %></td>
-        <td><%=l leadership_job.created_at %></td>
+        <td><%= link_to leadership_job.title, leadership_job.link %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_leadership_job_path(leadership_job), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      leadership_job_path(leadership_job),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <% if leadership_job.description.length > preview_characters %>
+            <%= sanitize truncate(leadership_job.description, length: preview_characters) %>
+            <%= link_to 'Read more', '', class: "read-more-#{leadership_job.id}" %>
+            <script>
+              $('.read-more-<%= leadership_job.id %>').on('click', function(e) {
+                e.preventDefault()
+                $(this).parent().html('<%= sanitize j leadership_job.description %>')
+              })
+            </script>
+          <% else %>
+            <%= leadership_job.description %>
+          <% end %>
         </td>
+        <td><%= leadership_job.pub_date %></td>
+        <td><%=  %></td>
       </tr>
     <% end %>
   </tbody>
