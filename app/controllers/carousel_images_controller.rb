@@ -1,7 +1,7 @@
 class CarouselImagesController < ApplicationController
-  before_action :set_carousel_image, only: [:show, :edit, :update, :destroy]
-
   before_action :authenticate_user! # Require admin
+
+  before_action :set_carousel_image, only: [:show, :edit, :update, :destroy]
 
   # GET /carousel_images
   # GET /carousel_images.json

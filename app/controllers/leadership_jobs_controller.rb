@@ -1,4 +1,6 @@
 class LeadershipJobsController < ApplicationController
+  before_action :authenticate_user! # Require admin
+
   before_action :set_leadership_job, only: [:show, :edit, :update, :destroy]
 
   # GET /leadership_jobs
@@ -69,6 +71,6 @@ class LeadershipJobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def leadership_job_params
-      params.require(:leadership_job).permit(:title, :description, :link, :pubdate)
+      params.require(:leadership_job).permit(:title, :description, :link, :pub_date, :source, :guid)
     end
 end
