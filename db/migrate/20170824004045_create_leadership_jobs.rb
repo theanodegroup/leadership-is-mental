@@ -4,7 +4,9 @@ class CreateLeadershipJobs < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :link
-      t.string :pubdate
+      t.date :pub_date
+      t.text :source
+      t.string :guid
 
       t.timestamps null: false
     end
