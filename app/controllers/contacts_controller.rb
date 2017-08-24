@@ -28,15 +28,31 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
+    puts "---------------------------"
+    puts "Referrer: #{request.referrer}"
+    puts "---------------------------"
+
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
-        format.js { render 'newsletter/signup_success' }
+        format.js do
+          if request.referrer == free_ebook_url
+            render 'pages/free_ebook/request_success'
+          else
+            render 'newsletter/signup_success'
+          end
+        end
       else
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
-        format.js { render 'newsletter/signup_failure' }
+        format.js do
+          if request.referrer == free_ebook_url
+            render 'pages/free_ebook/request_failure'
+          else
+            render 'newsletter/signup_failure'
+          end
+        end
       end
     end
   end

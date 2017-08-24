@@ -45,6 +45,7 @@ class PagesController < ApplicationController
   end
 
   def free_ebook
+    @contact = Contact.new
     @ebook = true
   end
 
