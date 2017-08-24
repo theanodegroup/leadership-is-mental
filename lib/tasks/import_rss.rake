@@ -15,12 +15,9 @@ namespace :import_rss do
 
     feeds = []
     #feeds += urls.product(queries).map{ |url, query| url + query }
-    feeds += [
-      # "http://au.indeed.com/rss?q=-Leader,-Manager,-Executive,-Director,-Chief,-President+$100,000-jobs",
-      # "http://www.indeed.co.uk/rss?q=-Leader,-Manager,-Executive,-Director,-Chief,-President+£50,000",
-      # "http://www.indeed.com/rss?q=-leader,-manager,-executive,-director,-chief,-president&explvl=senior_level",
-      "http://au.indeed.com/rss?q=Leader,-Manager,-Executive,-Director,-Chief,-President-$100,000-jobs",
-      "http://www.indeed.co.uk/rss?q=Leader, Manager, Executive, Director, Chief, President £50,000",
+    feeds = [
+      "https://au.indeed.com/rss/Leader,-Manager,-Executive,-Director,-Chief,-President-$100,000-jobs",
+      "https://www.indeed.co.uk/rss/Leader,+Manager,+Executive,+Director,+Chief,+President+%C2%A350,000",
       "http://www.indeed.com/rss?q=leader,+manager,+executive,+director,+chief,+president&explvl=senior_level",
     ]
 
