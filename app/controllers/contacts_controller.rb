@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
   before_action :authenticate_user!, only: [:index, :new, :show, :edit, :update, :destroy] # Require admin
+
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
   # GET /contacts.json

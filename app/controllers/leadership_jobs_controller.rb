@@ -1,4 +1,6 @@
 class LeadershipJobsController < ApplicationController
+  before_action :authenticate_user! # Require admin
+
   before_action :set_leadership_job, only: [:show, :edit, :update, :destroy]
 
   # GET /leadership_jobs
