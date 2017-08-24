@@ -37,6 +37,7 @@ class PagesController < ApplicationController
   end
 
   def leadership_jobs
+    @leadership_jobs = LeadershipJob.all
   end
 
   def events

@@ -2,39 +2,8 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th class='readmore'><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:pub_date) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% preview_characters = 100 %>
-    <% @leadership_jobs.each do |leadership_job| %>
-      <tr>
-        <td><%= link_to leadership_job.title, leadership_job.link %></td>
-        <td>
-          <% if leadership_job.description.length > preview_characters %>
-            <%= sanitize truncate(leadership_job.description, length: preview_characters) %>
-            <%= link_to 'Read more', '', class: "read-more-#{leadership_job.id}" %>
-            <script>
-              $('.read-more-<%= leadership_job.id %>').on('click', function(e) {
-                e.preventDefault()
-                $(this).parent().html('<%= sanitize j leadership_job.description %>')
-              })
-            </script>
-          <% else %>
-            <%= leadership_job.description %>
-          <% end %>
-        </td>
-        <td><%= leadership_job.pub_date %></td>
-        <td><%=  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%= render partial: 'leadership_jobs/table' %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_leadership_job_path,
