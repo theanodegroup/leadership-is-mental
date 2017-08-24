@@ -1,6 +1,5 @@
-<h1>Editing Leadership Job</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @leadership_job %> |
-<%= link_to 'Back', leadership_jobs_path %>
+<%- model_class = LeadershipJob -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

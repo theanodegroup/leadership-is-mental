@@ -1,33 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Leadership Jobs</h1>
-
-<table>
+<%- model_class = LeadershipJob -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Link</th>
-      <th>Pubdate</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:link) %></th>
+      <th><%= model_class.human_attribute_name(:pub_date) %></th>
+      <th><%= model_class.human_attribute_name(:source) %></th>
+      <th><%= model_class.human_attribute_name(:guid) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @leadership_jobs.each do |leadership_job| %>
       <tr>
+        <td><%= link_to leadership_job.id, leadership_job_path(leadership_job) %></td>
         <td><%= leadership_job.title %></td>
         <td><%= leadership_job.description %></td>
         <td><%= leadership_job.link %></td>
-        <td><%= leadership_job.pubdate %></td>
-        <td><%= link_to 'Show', leadership_job %></td>
-        <td><%= link_to 'Edit', edit_leadership_job_path(leadership_job) %></td>
-        <td><%= link_to 'Destroy', leadership_job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= leadership_job.pub_date %></td>
+        <td><%= leadership_job.source %></td>
+        <td><%= leadership_job.guid %></td>
+        <td><%=l leadership_job.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_leadership_job_path(leadership_job), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      leadership_job_path(leadership_job),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Leadership job', new_leadership_job_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_leadership_job_path,
+            :class => 'btn btn-primary' %>
