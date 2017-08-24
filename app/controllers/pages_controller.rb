@@ -27,6 +27,7 @@ class PagesController < ApplicationController
 
   # AJAX
   def newsletter_signup
+    @ebook = false
   end
 
   # Site Pages
@@ -44,6 +45,8 @@ class PagesController < ApplicationController
   end
 
   def free_ebook
+    @contact = Contact.new
+    @ebook = true
   end
 
   def blog
