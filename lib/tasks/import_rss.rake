@@ -4,20 +4,34 @@ namespace :import_rss do
     require 'rss'
     puts "Importing Jobs via RSS"
 
-    urls = [
-      "http://rss.indeed.com/rss?q=",
-      "http://www.indeed.co.uk/rss?q=",
-      "http://au.indeed.com/rss?q="
-    ]
-    queries = [
-      "leader,+manager,+executive,+director,+chief,+president&explvl=senior_level"
-    ]
+    # urls = [
+    #   "http://rss.indeed.com/rss?q=",
+    #   "http://www.indeed.co.uk/rss?q=",
+    #   "http://au.indeed.com/rss?q=",
+    # ]
+    # queries = [
+    #   "leader,+manager,+executive,+director,+chief,+president&explvl=senior_level",
+    # ]
 
-    feeds = urls.product(queries).map{ |url, query| url + query }
+    feeds = []
+    #feeds += urls.product(queries).map{ |url, query| url + query }
+    feeds += [
+      # "http://au.indeed.com/rss?q=-Leader,-Manager,-Executive,-Director,-Chief,-President+$100,000-jobs",
+      # "http://www.indeed.co.uk/rss?q=-Leader,-Manager,-Executive,-Director,-Chief,-President+£50,000",
+      # "http://www.indeed.com/rss?q=-leader,-manager,-executive,-director,-chief,-president&explvl=senior_level",
+      "http://au.indeed.com/rss?q=Leader,-Manager,-Executive,-Director,-Chief,-President-$100,000-jobs",
+      "http://www.indeed.co.uk/rss?q=Leader, Manager, Executive, Director, Chief, President £50,000",
+      "http://www.indeed.com/rss?q=leader,+manager,+executive,+director,+chief,+president&explvl=senior_level",
+    ]
 
     feeds.each do |feed|
       puts "Importing jobs feed: #{feed}"
       rss = RSS::Parser.parse(feed, false)
+      if rss.nil? || rss.items.nil? || rss.items.empty?
+        puts "Nothing to import"
+        next
+      end
+
       rss.items.each do |item|
         begin
           LeadershipJob.create({
