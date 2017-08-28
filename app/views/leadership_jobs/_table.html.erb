@@ -21,7 +21,9 @@
             <script>
               $('.read-more-<%= leadership_job.id %>').on('click', function(e) {
                 e.preventDefault()
-                $(this).parent().html('<%= sanitize j leadership_job.description %>')
+                var parent = $(this).parent()
+                parent.html('<%= sanitize leadership_job.description %>')
+                parent.find('a').attr("target","_blank");
               })
             </script>
           <% else %>
