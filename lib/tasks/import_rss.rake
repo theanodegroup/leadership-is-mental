@@ -18,7 +18,7 @@ namespace :import_rss do
     feeds = [
       "https://au.indeed.com/rss?&as_ttl=leader+or+executive+or+director+or+chief+or+president&salary=%24150%2C000%2B&sort=date",
       "https://www.indeed.co.uk/rss?&as_ttl=leader+or+executive+or+director+or+chief+or+president&salary=%C2%A380,000&sort=date",
-      "https://www.indeed.com/rss?q=Leader+executive+director+President+Chief&salary=%24100%2C000",
+      "http://www.indeed.com/rss?q=Leader+executive+director+President+Chief&salary=%24100%2C000",
     ]
 
     feeds.each do |feed|
