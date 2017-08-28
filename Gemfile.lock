@@ -78,6 +78,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
@@ -199,6 +211,7 @@ DEPENDENCIES
   gretel
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   newrelic_rpm
   pg
   phonelib

@@ -1,26 +1,26 @@
 Rails.application.routes.draw do
-  resources :leadership_jobs
-  devise_for :users
-  resources :messages
-  resources :carousel_images
-  post 'pages/update/quill', to: 'pages#quill_update', as: :quill_update
-  post 'pages/show/quill', to: 'pages#show_quill', as: :show_quill_editor
+  resources :leadership_jobs, path: 'admin/leadership_jobs'
+  devise_for :users, path: 'admin/users'
+  resources :messages, path: 'admin/messages'
+  resources :carousel_images, path: 'admin/carousel_images'
+  post 'update/quill', to: 'pages#quill_update', as: :quill_update
+  post 'show/quill', to: 'pages#show_quill', as: :show_quill_editor
 
   resources :contacts, path: 'newsletter_signups'
-  get 'pages/blog', to: 'pages#blog', as: :blog
-  get 'pages/contact', to: 'pages#contact', as: :contact_us
-  get 'pages/newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
+  get 'blog', to: 'pages#blog', as: :blog
+  get 'contact', to: 'pages#contact', as: :contact_us
+  get 'newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
 
-  get 'pages/about', to: 'pages#about', as: :about
-  get 'pages/what-you-get', to: 'pages#what_you_get', as: :what_you_get
-  get 'pages/leadership-jobs', to: 'pages#leadership_jobs', as: :leadership_jobs_page
-  get 'pages/events', to: 'pages#events', as: :events
-  get 'pages/free-ebook', to: 'pages#free_ebook', as: :free_ebook
+  get 'about', to: 'pages#about', as: :about
+  get 'what-you-get', to: 'pages#what_you_get', as: :what_you_get
+  get 'leadership-jobs', to: 'pages#leadership_jobs', as: :leadership_jobs_page
+  get 'events', to: 'pages#events', as: :events
+  get 'free-ebook', to: 'pages#free_ebook', as: :free_ebook
 
-  get 'pages/disclaimer', to: 'pages#disclaimer', as: :disclaimer
-  get 'pages/legal', to: 'pages#legal', as: :legal
-  get 'pages/terms_of_use', to: 'pages#terms_of_use', as: :terms_of_use
-  get 'pages/sitemap', to: 'pages#sitemap', as: :sitemap
+  get 'disclaimer', to: 'pages#disclaimer', as: :disclaimer
+  get 'legal', to: 'pages#legal', as: :legal
+  get 'terms_of_use', to: 'pages#terms_of_use', as: :terms_of_use
+  get 'sitemap', to: 'pages#sitemap', as: :sitemap
 
   root 'pages#home'
 end

@@ -6,7 +6,7 @@ class LeadershipJobsController < ApplicationController
   # GET /leadership_jobs
   # GET /leadership_jobs.json
   def index
-    @leadership_jobs = LeadershipJob.all
+    @leadership_jobs = LeadershipJob.order(pub_date: :desc).page(params[:page])
   end
 
   # GET /leadership_jobs/1
