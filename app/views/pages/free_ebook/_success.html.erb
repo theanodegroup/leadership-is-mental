@@ -1,5 +1,8 @@
-<p>Thanks, here is your free download link.</p>
-<%= link_to 'Download', '#' %>
+<p>
+  Thanks, here is your free download link.<br>
+  <%= render partial: 'documents/download', locals: { doc: Document.ebook.doc} %>
+</p>
+
 <p>Be sure to let me know your comments and thoughts on the book.</p>
 <p>Happy Reading!</p>
 <p>Cheers, Dayo</p>
