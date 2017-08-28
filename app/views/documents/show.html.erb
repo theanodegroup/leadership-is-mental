@@ -7,8 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @document.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:document) %>:</strong></dt>
-      <% doc = @document.doc %>
-  <dd><%= link_to 'Download', cl_private_download_url(doc.file.public_id, doc.format) %></dd>
+  <dd><%= render partial: 'documents/download', locals: { doc: Document.ebook.doc} %></dd>
 </dl>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_document_path(@document),
