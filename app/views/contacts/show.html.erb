@@ -8,6 +8,8 @@
   <dd><%= @contact.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @contact.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ebook) %>:</strong></dt>
+  <dd><%= @contact.ebook == true ? "Yes" : "No" %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
