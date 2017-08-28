@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :documents
   resources :leadership_jobs, path: 'admin/leadership_jobs'
   devise_for :users, path: 'admin/users'
   resources :messages, path: 'admin/messages'

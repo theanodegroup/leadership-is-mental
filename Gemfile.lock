@@ -226,7 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  carrierwave
+  carrierwave (~> 1.0)
   cloudinary
   coffee-rails (~> 4.1.0)
   devise

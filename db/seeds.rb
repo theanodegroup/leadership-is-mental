@@ -21,3 +21,6 @@ if Rails.env.development?
   end
   CarouselImage.update_positions
 end
+
+# eBook
+eBook = Document.create!(name: 'eBook')

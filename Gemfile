@@ -37,7 +37,7 @@ gem 'devise'
 # CMS
 gem "phrasing"
 gem 'quilljs-rails'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
 gem 'cloudinary' # Store uploaded Files users can download
 
 # Validations
