@@ -3,4 +3,5 @@
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
 
+<%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/top" } %>
 <%= render partial: 'leadership_jobs/table' %>
