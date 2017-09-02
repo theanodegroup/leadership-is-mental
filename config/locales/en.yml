@@ -25,7 +25,11 @@ en:
       contact:
         name: "Name"
         email: "Email"
+      leadership_job:
+        title: "Job"
+        pub_date: "Posted On"
     models:
+        leadership_job:
         contact:
           one: 'Newsletter Signup'
           other: 'Newsletter Signups'

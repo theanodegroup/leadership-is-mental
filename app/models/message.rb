@@ -6,6 +6,8 @@ class Message < ActiveRecord::Base
   validates_length_of :content, :maximum => 500
   validates_length_of :phone, :maximum => 15
 
+  default_scope { order(created_at: :desc) }
+
   # Format Validations
   validates :content, format: {
     with: /\A[a-zA-Z0-9!#$%&*()-_:";'?\/,.\s]*\z/,
