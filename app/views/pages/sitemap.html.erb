@@ -2,3 +2,10 @@
 
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
+
+
+<ul class='sitemap-list'>
+  <% PagesController::PAGE_PATHS_HASH.each do |key, data| %>
+    <li><%= link_to data[:title], polymorphic_path(key) %></li>
+  <% end %>
+</ul>

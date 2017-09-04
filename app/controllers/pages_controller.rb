@@ -4,17 +4,18 @@ class PagesController < ApplicationController
   before_action :set_pages_vars, except: [:quill_update, :show_quill, :newsletter_signup]
 
   PAGE_PATHS_HASH = {
-    contact_us: 'Contact Us',
-    newsletter_signup: 'Newsletter Signup',
-    blog: 'Blog',
-    about: 'About',
-    what_you_get: 'What you get',
-    leadership_jobs_page: 'Leadership Jobs',
-    events: 'Events',
-    free_ebook: 'Free eBook',
-    disclaimer: 'Disclaimer',
-    legal: 'Legal',
-    terms_of_use: 'Terms of Use'
+    about: { title: 'About'},
+    what_you_get: { title: 'What you get'},
+    leadership_jobs_page: { title: 'Leadership Jobs'},
+    events: { title: 'Events'},
+    news: { title: 'News'},
+    free_ebook: { title: 'Free eBook'},
+    blog: { title: 'Blog'},
+    contact_us: { title: 'Contact Us'},
+    newsletter_signup: { title: 'Newsletter Signup'},
+    terms_of_use: { title: 'Terms of Use'},
+    disclaimer: { title: 'Disclaimer'},
+    legal: { title: 'Legal'},
   }
 
   # Quill
@@ -65,6 +66,9 @@ class PagesController < ApplicationController
   end
 
   def blog
+  end
+
+  def news
   end
 
   def contact
