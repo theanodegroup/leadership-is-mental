@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :contacts, path: 'newsletter_signups'
   get 'blog', to: 'pages#blog', as: :blog
+  get 'news', to: 'pages#news', as: :news
   get 'contact', to: 'pages#contact', as: :contact_us
   get 'newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
 
