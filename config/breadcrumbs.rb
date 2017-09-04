@@ -6,7 +6,7 @@ end
 [
   :about, :blog, :newsletter_signup, :what_you_get,
   :leadership_jobs, :events, :free_ebook, :disclaimer,
-  :legal, :terms_of_use, :sitemap
+  :legal, :terms_of_use, :sitemap, :news
 ].each do |breadcrumb|
   crumb breadcrumb do
     link breadcrumb.to_s.titleize, polymorphic_path(breadcrumb)
