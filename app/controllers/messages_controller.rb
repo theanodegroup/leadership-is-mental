@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     respond_to do |format|
-      if @message.save
+      if verify_recaptcha(model: @message) && @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
         format.js { render 'messages/submit/success' }
