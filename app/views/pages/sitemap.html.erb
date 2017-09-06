@@ -3,6 +3,7 @@
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
 
+<%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/top" } %>
 
 <ul class='sitemap-list'>
   <% PagesController::PAGE_PATHS_HASH.each do |key, data| %>
