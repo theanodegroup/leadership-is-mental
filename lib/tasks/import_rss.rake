@@ -65,6 +65,7 @@ namespace :import_rss do
 
       rss.items.each do |item|
         begin
+          # @todo: Use LeadershipNewsArticle instead
           LeadershipJob.create({
             title: item.title,
             link: item.link,
