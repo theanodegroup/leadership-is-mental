@@ -1,4 +1,4 @@
 <div class='editable'>
   <%= render partial: "editable/text",
-             locals: { phrase: "#{phrase}/size" } %>
+             locals: { phrase: "#{phrase}/size" } if can_edit_phrases? %>
 </div>
