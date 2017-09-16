@@ -1,19 +1,31 @@
 <div class="panel panel-default">
   <% if defined? phrase_heading %>
     <div class="panel-heading">
-      <%= render partial: "editable/#{editable_type(phrase_heading)}",
-                 locals: { phrase: phrase_heading } %>
+      <% font_size = phrase_lookup("#{phrase_heading}/size").to_i %>
+      <%= render partial: 'editable/size', locals: { phrase: phrase_heading } %>
+      <div style='<%= "font-size: #{font_size}px" if font_size > 0 %>'>
+        <%= render partial: "editable/#{editable_type(phrase_heading)}",
+                   locals: { phrase: phrase_heading } %>
+      </div>
     </div>
   <% end %>
-  <% if defined? phrase_heading %>
+  <% if defined? phrase_body %>
     <div class="panel-body ">
-      <%= render partial: "editable/#{editable_type(phrase_body)}",
-                 locals: { phrase: phrase_body } %>
+      <% font_size = phrase_lookup("#{phrase_body}/size").to_i %>
+      <%= render partial: 'editable/size', locals: { phrase: phrase_body } %>
+      <div <%= "style='font-size: #{font_size}px'" if font_size > 0 %>>
+        <%= render partial: "editable/#{editable_type(phrase_body)}",
+                   locals: { phrase: phrase_body } %>
+      </div>
     </div>
   <% end %>
   <% if defined?(footer_text) && defined?(footer_source) %>
     <div class="panel-footer text-right">
-      <%= link_to footer_text, footer_source %>
+      <% font_size = phrase_lookup("#{footer_text}/size").to_i %>
+      <%= render partial: 'editable/size', locals: { phrase: footer_text } %>
+      <div <%= "style='font-size: #{font_size}px'" if font_size > 0 %>>
+        <%= link_to footer_text, footer_source %>
+      </div>
     </div>
   <% end %>
 </div>

@@ -107,11 +107,11 @@
         console.log('Status | ' + phrasing_last_value + " | " + value)
         if (value != phrasing_last_value) {
           if (value == 'true') {
-            $('.quill-uneditable').hide();
-            $('.quill-editable').show();
+            $('.uneditable').hide();
+            $('.editable').show();
           } else {
-            $('.quill-uneditable').show();
-            $('.quill-editable').hide();
+            $('.uneditable').show();
+            $('.editable').hide();
           }
           phrasing_last_value = value
         }

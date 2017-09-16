@@ -1,10 +1,10 @@
 <% js_phrase = phrase.gsub('/', '-').gsub('_', '-') %>
 <div id='quill-<%= js_phrase %>' class='quill'>
   <% if can_edit_phrases? %>
-    <div class='quill-uneditable'>
+    <div class='uneditable'>
       <%= render partial: 'editable/quill/uneditable', locals: {phrase: phrase} %>
     </div>
-    <div class='quill-editable'>
+    <div class='editable'>
       <%= render partial: 'editable/quill/editable', locals: {phrase: phrase} %>
     </div>
   <% else %>
