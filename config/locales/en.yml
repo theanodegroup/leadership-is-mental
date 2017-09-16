@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  date:
+    formats:
+      published_date: "%b %-d, %Y"
   activerecord:
     attributes:
       contact:
