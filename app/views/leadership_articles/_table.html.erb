@@ -1,0 +1,42 @@
+<%- model_class = LeadershipArticle -%>
+<%# Parialized, so move pagination handler here instead of the controller %>
+<% @leadership_jobs = @leadership_jobs.page(params[:page]).per(10) %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:pub_date) %></th>
+      <th><%= model_class.human_attribute_name(:summary) %></th>
+      <th><%= model_class.human_attribute_name(:source) %></th>
+      <th><%= model_class.human_attribute_name(:guid) %></th>
+      <th><%= model_class.human_attribute_name(:image_url) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leadership_articles.each do |leadership_article| %>
+      <tr>
+        <td><%= link_to leadership_article.id, leadership_article_path(leadership_article) %></td>
+        <td><%= leadership_article.title %></td>
+        <td><%= leadership_article.pub_date %></td>
+        <td><%= leadership_article.summary %></td>
+        <td><%= leadership_article.source %></td>
+        <td><%= leadership_article.guid %></td>
+        <td><%= leadership_article.image_url %></td>
+        <td><%=l leadership_article.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_leadership_article_path(leadership_article), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      leadership_article_path(leadership_article),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @leadership_jobs %>

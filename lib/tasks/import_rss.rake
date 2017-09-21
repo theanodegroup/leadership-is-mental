@@ -64,6 +64,12 @@ namespace :import_rss do
       end
 
       rss.items.each do |item|
+        image = nil
+        begin
+          image = Nokogiri::HTML(item.content.content).css('img').first.attributes["src"].value
+        rescue StandardError
+        end
+
         begin
           # @todo: Use LeadershipNewsArticle instead
           LeadershipArticle.create({
@@ -71,8 +77,9 @@ namespace :import_rss do
             content: item.content.content,
             pub_date: item.published.content,
             summary: item.summary.content,
-            source: "Harvard Business Review",
+            source: item.links.first.href,
             guid: item.id.content,
+            image_url: image,
           })
         rescue StandardError => e
           puts "Error in Importing Job: #{e.class} => #{e.message}"
@@ -85,9 +92,9 @@ namespace :import_rss do
 
     max_news = 300
     puts "Limiting number of news articles to #{max_news}"
-    jobs_to_save = LeadershipArticle.all.limit(max_jobs)
+    jobs_to_save = LeadershipArticle.all.limit(max_news)
     LeadershipArticle.where.not(id: jobs_to_save).delete_all
-    puts "There are now at most #{max_jobs} leadership jobs"
+    puts "There are now at most #{max_news} leadership jobs"
     puts "Number of leadership jobs: #{LeadershipArticle.all.size}"
   end
 

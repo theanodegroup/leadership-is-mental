@@ -7,6 +7,7 @@ class CreateLeadershipArticles < ActiveRecord::Migration
       t.text :summary
       t.string :source
       t.string :guid
+      t.text :image_url
 
       t.timestamps null: false
     end

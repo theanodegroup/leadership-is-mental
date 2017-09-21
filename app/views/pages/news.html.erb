@@ -2,3 +2,8 @@
 
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
+
+
+<% @aricles.each do |article| %>
+  <%= render partial: 'shared/article', locals: { article: article } %>
+<% end %>

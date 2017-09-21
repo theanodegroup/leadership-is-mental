@@ -69,6 +69,7 @@ class PagesController < ApplicationController
   end
 
   def news
+    @aricles = LeadershipArticle.all
   end
 
   def contact
