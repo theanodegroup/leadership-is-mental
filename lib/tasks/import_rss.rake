@@ -52,7 +52,7 @@ namespace :import_rss do
     puts "Importing Jobs via RSS"
 
     feeds = [
-      "http://feeds.hbr.org/harvardbusiness",
+      "#{ENV.fetch('HBR_FEED_URL')}",
     ]
 
     feeds.each do |feed|
