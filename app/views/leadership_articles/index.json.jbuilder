@@ -1,0 +1,1 @@
+json.array! @leadership_articles, partial: 'leadership_articles/leadership_article', as: :leadership_article

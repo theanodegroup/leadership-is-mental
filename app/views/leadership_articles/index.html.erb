@@ -1,0 +1,10 @@
+<%- model_class = LeadershipArticle -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%= render partial: 'leadership_articles/table' %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_leadership_article_path,
+            :class => 'btn btn-primary' %>
