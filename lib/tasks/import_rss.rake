@@ -66,13 +66,13 @@ namespace :import_rss do
       rss.items.each do |item|
         begin
           # @todo: Use LeadershipNewsArticle instead
-          LeadershipJob.create({
-            title: item.title,
-            link: item.link,
-            pub_date: item.pubDate,
-            description: item.description,
-            source: item.source.content,
-            guid: item.guid.content,
+          LeadershipArticle.create({
+            title: item.title.content,
+            content: item.content.content,
+            pub_date: item.published.content,
+            summary: item.summary.content,
+            source: "Harvard Business Review",
+            guid: item.id.content,
           })
         rescue StandardError => e
           puts "Error in Importing Job: #{e.class} => #{e.message}"
@@ -83,12 +83,12 @@ namespace :import_rss do
 
     puts "Jobs import via RSS Completed"
 
-    max_jobs = 300
-    puts "Limiting number of leadership jobs to #{max_jobs}"
-    jobs_to_save = LeadershipJob.all.limit(max_jobs)
-    LeadershipJob.where.not(id: jobs_to_save).delete_all
+    max_news = 300
+    puts "Limiting number of news articles to #{max_news}"
+    jobs_to_save = LeadershipArticle.all.limit(max_jobs)
+    LeadershipArticle.where.not(id: jobs_to_save).delete_all
     puts "There are now at most #{max_jobs} leadership jobs"
-    puts "Number of leadership jobs: #{LeadershipJob.all.size}"
+    puts "Number of leadership jobs: #{LeadershipArticle.all.size}"
   end
 
 

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Leadership Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Pub date</th>
+      <th>Summary</th>
+      <th>Source</th>
+      <th>Guid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leadership_articles.each do |leadership_article| %>
+      <tr>
+        <td><%= leadership_article.title %></td>
+        <td><%= leadership_article.content %></td>
+        <td><%= leadership_article.pub_date %></td>
+        <td><%= leadership_article.summary %></td>
+        <td><%= leadership_article.source %></td>
+        <td><%= leadership_article.guid %></td>
+        <td><%= link_to 'Show', leadership_article %></td>
+        <td><%= link_to 'Edit', edit_leadership_article_path(leadership_article) %></td>
+        <td><%= link_to 'Destroy', leadership_article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leadership article', new_leadership_article_path %>

@@ -1,0 +1,41 @@
+<%= form_for(@leadership_article) do |f| %>
+  <% if @leadership_article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leadership_article.errors.count, "error") %> prohibited this leadership_article from being saved:</h2>
+
+      <ul>
+      <% @leadership_article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_date %><br>
+    <%= f.datetime_select :pub_date %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :guid %><br>
+    <%= f.text_field :guid %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

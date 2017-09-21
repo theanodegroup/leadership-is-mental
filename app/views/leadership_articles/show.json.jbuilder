@@ -1,0 +1,1 @@
+json.partial! "leadership_articles/leadership_article", leadership_article: @leadership_article
