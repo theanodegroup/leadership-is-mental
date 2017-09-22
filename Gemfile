@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Monitoring
 gem 'newrelic_rpm'
+gem 'rails_autoscale_agent'
 
 # Styling
 gem "twitter-bootstrap-rails"
