@@ -2,7 +2,9 @@ class CreateFacebookPosts < ActiveRecord::Migration
   def change
     create_table :facebook_posts do |t|
       t.string :title
-      t.string :facebook_url
+      t.string :url
+      t.datetime :pub_date
+      t.string :posted_by
       t.string :guid
       t.string :image_url
 

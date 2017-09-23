@@ -23,11 +23,25 @@
     <%=f.error_span(:title) %>
   </div>
   <div class="form-group">
-    <%= f.label :facebook_url, :class => 'control-label col-lg-2' %>
+    <%= f.label :url, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :facebook_url, :class => 'form-control' %>
+      <%= f.text_field :url, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:facebook_url) %>
+    <%=f.error_span(:url) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pub_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :pub_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:pub_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :posted_by, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :posted_by, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:posted_by) %>
   </div>
   <div class="form-group">
     <%= f.label :guid, :class => 'control-label col-lg-2' %>

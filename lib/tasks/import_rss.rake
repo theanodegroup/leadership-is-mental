@@ -129,7 +129,9 @@ namespace :import_rss do
           # @todo: Use LeadershipNewsArticle instead
           FacebookPost.create({
             title: item.title,
-            facebook_url: item.link,
+            url: item.link,
+            pub_date: item.pubDate,
+            posted_by: item.dc_creator,
             guid: item.guid.content,
             image_url: image,
           })

@@ -42,11 +42,13 @@ ActiveRecord::Schema.define(version: 20170923035202) do
 
   create_table "facebook_posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "facebook_url"
+    t.string   "url"
+    t.datetime "pub_date"
+    t.string   "posted_by"
     t.string   "guid"
     t.string   "image_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "leadership_articles", force: :cascade do |t|

@@ -2,3 +2,9 @@
 
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
+
+<div style='margin: 0 auto;'>
+  <% FacebookPost.all.each do |fb_post| %>
+    <%= render partial: 'facebook_posts/post', locals: {fb_post: fb_post} %>
+  <% end %>
+</div>

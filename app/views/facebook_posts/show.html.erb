@@ -6,8 +6,12 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @facebook_post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:facebook_url) %>:</strong></dt>
-  <dd><%= @facebook_post.facebook_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
+  <dd><%= @facebook_post.url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pub_date) %>:</strong></dt>
+  <dd><%= @facebook_post.pub_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:posted_by) %>:</strong></dt>
+  <dd><%= @facebook_post.posted_by %></dd>
   <dt><strong><%= model_class.human_attribute_name(:guid) %>:</strong></dt>
   <dd><%= @facebook_post.guid %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image_url) %>:</strong></dt>
