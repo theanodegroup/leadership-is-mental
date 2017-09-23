@@ -3,8 +3,8 @@
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
 
-<div style='margin: 0 auto;'>
-  <% FacebookPost.all.each do |fb_post| %>
+<% FacebookPost.all.each do |fb_post| %>
+  <div style='display: table; margin: 0 auto;'>
     <%= render partial: 'facebook_posts/post', locals: {fb_post: fb_post} %>
-  <% end %>
-</div>
+  </div>
+<% end %>
