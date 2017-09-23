@@ -1,0 +1,1 @@
+json.partial! "facebook_posts/facebook_post", facebook_post: @facebook_post

@@ -1,0 +1,42 @@
+<%- model_class = FacebookPost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:facebook_url) %></th>
+      <th><%= model_class.human_attribute_name(:guid) %></th>
+      <th><%= model_class.human_attribute_name(:image_url) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @facebook_posts.each do |facebook_post| %>
+      <tr>
+        <td><%= link_to facebook_post.id, facebook_post_path(facebook_post) %></td>
+        <td><%= facebook_post.title %></td>
+        <td><%= facebook_post.facebook_url %></td>
+        <td><%= facebook_post.guid %></td>
+        <td><%= facebook_post.image_url %></td>
+        <td><%=l facebook_post.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_facebook_post_path(facebook_post), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      facebook_post_path(facebook_post),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_facebook_post_path,
+            :class => 'btn btn-primary' %>

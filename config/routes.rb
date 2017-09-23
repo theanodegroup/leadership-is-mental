@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :facebook_posts
+  resources :facebook_posts
   resources :leadership_articles
   resources :documents
   resources :leadership_jobs, path: 'admin/leadership_jobs'

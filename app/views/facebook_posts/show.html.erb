@@ -1,0 +1,25 @@
+<%- model_class = FacebookPost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @facebook_post.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:facebook_url) %>:</strong></dt>
+  <dd><%= @facebook_post.facebook_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:guid) %>:</strong></dt>
+  <dd><%= @facebook_post.guid %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image_url) %>:</strong></dt>
+  <dd><%= @facebook_post.image_url %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              facebook_posts_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_facebook_post_path(@facebook_post), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              facebook_post_path(@facebook_post),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

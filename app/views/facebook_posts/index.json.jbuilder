@@ -1,0 +1,1 @@
+json.array! @facebook_posts, partial: 'facebook_posts/facebook_post', as: :facebook_post

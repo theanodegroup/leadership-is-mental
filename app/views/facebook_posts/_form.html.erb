@@ -1,0 +1,55 @@
+<%= form_for @facebook_post, :html => { :class => "form-horizontal facebook_post" } do |f| %>
+
+  <% if @facebook_post.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@facebook_post.errors.count, "error") %> prohibited this facebook_post from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @facebook_post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :facebook_url, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :facebook_url, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:facebook_url) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :guid, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :guid, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:guid) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_url, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :image_url, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:image_url) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                facebook_posts_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
