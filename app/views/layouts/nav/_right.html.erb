@@ -5,7 +5,7 @@
                 ENV.fetch('SOCIAL_MEDIA_URL_TWITTER'), target: :_blank) %>
   <%= menu_item(image_tag('branding/linkedin/In-2C-28px-TM.png'),
                 ENV.fetch('SOCIAL_MEDIA_URL_LINKEDIN'), target: :_blank) %>
-  <%= menu_item("Blog", blog_path) %>
+  <%= menu_item("Blog", blog_path, "data-turbolinks" => "false") %>
   <%= menu_item("Contact", contact_us_path) %>
   <%= menu_item("Newsletter Signup", newsletter_signup_path, class: 'show_newsletter_modal_new' ) %>
   <% if user_signed_in? %>
