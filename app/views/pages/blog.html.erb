@@ -3,8 +3,13 @@
 <% content_for :page_header, @title %>
 <% breadcrumb @breadcrumb %>
 
-<% FacebookPost.all.each do |fb_post| %>
+<% @posts = @posts.page(params[:page]).per(5) %>
+<% @posts.each do |fb_post| %>
   <div style='display: table; margin: 0 auto;'>
     <%= render partial: 'facebook_posts/post', locals: {fb_post: fb_post} %>
   </div>
+  <br>
+  <br>
 <% end %>
+
+<%= paginate @posts %>

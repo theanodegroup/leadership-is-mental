@@ -4,6 +4,10 @@
 <% breadcrumb @breadcrumb %>
 
 
+<% @aricles = @aricles.page(params[:page]).per(5) %>
 <% @aricles.each do |article| %>
   <%= render partial: 'shared/article', locals: { article: article } %>
 <% end %>
+
+
+<%= paginate @aricles %>
