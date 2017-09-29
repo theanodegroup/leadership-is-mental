@@ -26,7 +26,8 @@
         <% url = item.try(:source).present? ? item.try(:source) : item.url %>
         <tr>
           <td style='vertical-align: middle; border-right: none'>
-              <small><%= item.title %></small>
+            <small
+              <small><%= truncate(item.title, length: 25) %></small>
           </td>
           <td style='border-left: none'>
             <%= link_to url, target: '_blank' do %>
