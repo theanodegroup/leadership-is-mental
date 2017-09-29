@@ -66,6 +66,7 @@ class PagesController < ApplicationController
   end
 
   def blog
+    @posts = FacebookPost.all
   end
 
   def news
