@@ -1,3 +1,6 @@
+<% phrase_heading = "home/panel/#{name}/heading" %>
+<% footer_text = "home/panel/#{name}/footer" %>
+<% footer_text = "Read More" %>
 <% js_phrase_heading = phrase_heading&.gsub('/', '-')&.gsub('_', '-') %>
 <div class="panel panel-default <%= js_phrase_heading %>">
   <% if defined? phrase_heading %>
@@ -17,25 +20,23 @@
                    locals: { phrase: phrase_heading } %>
       </div>
     </div>
-  <% end %>
-  <% if defined? phrase_body %>
-    <style>
-      <% body_font_size = phrase_lookup("#{phrase_body}/size").to_i %>
-      <% if body_font_size > 0 %>
-        .<%= js_phrase_heading %> .panel-body p {
-          font-size: <%= body_font_size %>px;
-        }
-      <% end %>
-    </style>
     <div class="panel-body">
-      <% font_size = phrase_lookup("#{phrase_body}/size").to_i %>
-      <%= render partial: 'editable/size', locals: { phrase: phrase_body } %>
-      <div style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'>
-        <%= render partial: "editable/#{editable_type(phrase_body)}",
-                   locals: { phrase: phrase_body } %>
-      </div>
+      <table class='table table-condensed table-striped table-hover table-bordered'>
+      <% feed.all.first(count).each do |item| %>
+        <% url = item.try(:source).present? ? item.try(:source) : item.url %>
+        <tr>
+          <td style='vertical-align: middle; border-right: none'>
+              <small><%= item.title %></small>
+          </td>
+          <td style='border-left: none'>
+            <%= link_to url, target: '_blank' do %>
+              <i class="fa fa-chevron-circle-right fa-3x" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
     </div>
-  <% end %>
   <% if defined?(footer_text) && defined?(footer_source) %>
     <style>
       <% footer_font_size = phrase_lookup("#{footer_text}/size").to_i %>
@@ -51,5 +52,6 @@
         <%= link_to footer_text, footer_source %>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>

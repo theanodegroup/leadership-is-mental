@@ -1,0 +1,16 @@
+<div class='col-md-4'>
+  <%= render partial: 'pages/home/feeds/feed',
+    locals: { name: 'jobs', count: 4, feed: LeadershipJob, footer_source: leadership_jobs_path, summary: false } %>
+</div>
+
+<div class='col-md-4'>
+  <%= render partial: 'pages/home/feeds/feed',
+    locals: { name: 'news', count: 4, footer_source: news_path, summary: true,
+    feed: FacebookPost.where.not("lower(#{:title}) like ?", "#{'https://twitter.com'}%"),
+    } %>
+</div>
+
+<div class='col-md-4'>
+  <%= render partial: 'pages/home/feeds/feed',
+    locals: { name: 'blog', count: 4, feed: LeadershipArticle, footer_source: blog_path, summary: true } %>
+</div>
