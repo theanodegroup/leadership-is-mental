@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require phrasing
+ *= require social-share-button
  *= require_tree .
  *= require_self
  */
@@ -32,4 +33,14 @@
     padding: 0;
     height: 100%;
     width: 100%;
+}
+
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

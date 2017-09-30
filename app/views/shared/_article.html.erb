@@ -5,15 +5,10 @@
   </div>
   <div class='col-xs-8 text-left'>
     <%= sanitize article.summary %>
-    <div class='col-xs-8'>
-      <% size = 3 %>
-      <% spacing = 2 %>
-      <div class='col-xs-<%= spacing %>'>
-        <div class="fb-like" data-href="<%= article.source %>"
+    <%= social_share_button_tag(article.title) %>
+    <div class="fb-like" data-href="<%= article.source %>"
              data-layout="button_count" data-action="like" data-size="small"
              data-show-faces="true" data-share="true"></div>
-      </div>
-    </div>
   </div>
   <div class='col-xs-2 text-center'>
     <%= link_to article.source, target: '_blank' do %>
