@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require phrasing
 //= require quill.global
+//= require social-share-button
 //= require_tree .

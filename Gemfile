@@ -31,6 +31,7 @@ gem 'rails_autoscale_agent'
 gem "twitter-bootstrap-rails"
 gem "gretel" # Breadcrumbs
 gem 'kaminari' # Pagination
+gem 'social-share-button'
 
 # User Management
 gem 'devise'
