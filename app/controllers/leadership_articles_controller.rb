@@ -4,7 +4,7 @@ class LeadershipArticlesController < ApplicationController
   # GET /leadership_articles
   # GET /leadership_articles.json
   def index
-    @leadership_articles = LeadershipArticle.all
+    @leadership_articles = LeadershipArticle.order(pub_date: :desc).page(params[:page])
   end
 
   # GET /leadership_articles/1
