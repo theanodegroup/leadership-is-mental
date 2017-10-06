@@ -1,6 +1,6 @@
 <%- model_class = LeadershipArticle -%>
 <%# Parialized, so move pagination handler here instead of the controller %>
-<% @leadership_jobs = @leadership_jobs.page(params[:page]).per(10) %>
+<% @leadership_articles = @leadership_articles.page(params[:page]).per(10) %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -39,4 +39,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @leadership_jobs %>
+<%= paginate @leadership_articles %>
