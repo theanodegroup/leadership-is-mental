@@ -4,6 +4,7 @@ class FacebookPostsController < ApplicationController
   # GET /facebook_posts
   # GET /facebook_posts.json
   def index
+    @facebook_posts = FacebookPost.order(pub_date: :desc).page(params[:page])
     @facebook_posts = FacebookPost.all
   end
 

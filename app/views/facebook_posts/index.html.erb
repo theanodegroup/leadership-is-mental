@@ -2,6 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<% @facebook_posts = @facebook_posts.page(params[:page]).per(10) %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -40,6 +41,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @facebook_posts %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_facebook_post_path,
