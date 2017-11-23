@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   resources :facebook_posts
   resources :leadership_articles
   resources :documents
