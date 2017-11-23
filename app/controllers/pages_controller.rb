@@ -18,28 +18,6 @@ class PagesController < ApplicationController
     legal: { title: 'Legal'},
   }
 
-  # Quill
-  def quill_update
-    key = params[:key]
-    value = params[:value]
-
-    phrase = PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key)
-    phrase.update(value: value)
-    respond_to do |format|
-      format.js { render 'editable/quill/update'}
-    end
-  end
-
-  def show_quill
-    @phrase = params[:phrase]
-    @value = PhrasingPhrase.find_or_initialize_by(locale: I18n.locale, key: @phrase).value
-
-
-    respond_to do |format|
-      format.js { render 'editable/quill/edit'}
-    end
-  end
-
   # AJAX
   def newsletter_signup
     @ebook = false

@@ -10,8 +10,8 @@ class Article < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   scope :has_title, -> { joins(:title_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
-  scope :has_summary, -> { joins(:summary_phrase).where(phrasing_phrases: { value: [nil, ''] })    }
-  scope :has_body, -> { joins(:body_phrase).where(phrasing_phrases: { value: [nil, ''] })    }
+  scope :has_summary, -> { joins(:summary_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
+  scope :has_body, -> { joins(:body_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
 
   scope :listable, -> { has_title.has_summary.has_body }
 
@@ -19,8 +19,8 @@ class Article < ActiveRecord::Base
 
 
   def listable?
-      fields = [:title, :summary, :body]
-      fields.any? { |field| !self.send(field).present? }
+    fields = [:title, :summary, :body]
+    fields.any? { |field| !self.send(field).present? }
   end
 
 
@@ -30,7 +30,7 @@ class Article < ActiveRecord::Base
     fields = [:title, :summary, :body, :image_url]
     fields.each do |field|
       full_field_name = "#{field}_phrase_id".to_sym
-      key = "article/#{id}/#{field}"
+      key = "quill/article/#{id}/#{field}"
       phrase_id = PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key).id
       update_hash[full_field_name] = phrase_id
     end
@@ -40,10 +40,15 @@ class Article < ActiveRecord::Base
 
   [:title, :summary, :body, :image_url].each do |field|
     define_method field do
-      self.send("#{field}_phrase").value
+      phrase = self.send("#{field}_phrase")
+      if phrase.value.present? && phrase.value != phrase.key
+        phrase.value
+      else
+        ''
+      end
     end
 
-    define_method "#{field}_key" do
+    define_method "#{field}_phrase_name" do
       self.send("#{field}_phrase").key
     end
   end

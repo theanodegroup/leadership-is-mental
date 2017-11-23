@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :articles, only: [:show]
-  resources :articles, path: 'admin/articles', except: [:edit]
+  resources :articles, path: 'admin/articles'
   resources :facebook_posts
   resources :leadership_articles
   resources :documents
