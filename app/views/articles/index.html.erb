@@ -5,11 +5,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title_phrase_id) %></th>
-      <th><%= model_class.human_attribute_name(:summary_phrase_id) %></th>
-      <th><%= model_class.human_attribute_name(:body_phrase_id) %></th>
-      <th><%= model_class.human_attribute_name(:image_url_phrase_id) %></th>
+      <th>Listed?</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,15 +14,11 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= link_to article.id, article_path(article) %></td>
-        <td><%= article.title_phrase_id %></td>
-        <td><%= article.summary_phrase_id %></td>
-        <td><%= article.body_phrase_id %></td>
-        <td><%= article.image_url_phrase_id %></td>
+        <td><%= article.title %></td>
         <td><%=l article.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_article_path(article), :class => 'btn btn-default btn-xs' %>
+          <%= link_to "show",
+                      article_path(article), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       article_path(article),
                       :method => :delete,

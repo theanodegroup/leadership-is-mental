@@ -12,7 +12,7 @@
   <%= menu_item("Newsletter Signup", newsletter_signup_path, class: 'show_newsletter_modal_new' ) %>
   <% if user_signed_in? %>
     <%= drop_down "Admin" do %>
-      <% [CarouselImage, Document, Contact, Message, LeadershipJob, LeadershipArticle,
+      <% [Article, CarouselImage, Document, Contact, Message, LeadershipJob, LeadershipArticle,
           FacebookPost].each do |model| %>
         <%= menu_item(model.model_name.human.pluralize.titleize, polymorphic_path(model)) %>
       <% end %>

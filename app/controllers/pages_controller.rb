@@ -70,7 +70,7 @@ class PagesController < ApplicationController
   end
 
   def articles
-    @articles = Article.all.existing
+    @articles = Article.all.listable
   end
 
   def news

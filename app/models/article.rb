@@ -13,9 +13,16 @@ class Article < ActiveRecord::Base
   scope :has_summary, -> { joins(:summary_phrase).where(phrasing_phrases: { value: [nil, ''] })    }
   scope :has_body, -> { joins(:body_phrase).where(phrasing_phrases: { value: [nil, ''] })    }
 
-  scope :existing, -> { has_title.has_summary.has_body }
+  scope :listable, -> { has_title.has_summary.has_body }
 
   after_create :phrase_it
+
+
+  def listable?
+      fields = [:title, :summary, :body]
+      fields.any? { |field| !self.send(field).present? }
+  end
+
 
   def phrase_it
     update_hash = {}
@@ -31,20 +38,14 @@ class Article < ActiveRecord::Base
     self.update(update_hash)
   end
 
-  def title
-    title_phrase.value
-  end
+  [:title, :summary, :body, :image_url].each do |field|
+    define_method field do
+      self.send("#{field}_phrase").value
+    end
 
-  def summary
-    summary_phrase.value
-  end
-
-  def body
-    body_phrase.value
-  end
-
-  def image_url
-    image_url_phrase.value
+    define_method "#{field}_key" do
+      self.send("#{field}_phrase").key
+    end
   end
 
   def source
