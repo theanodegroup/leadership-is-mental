@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171123022252) do
     t.integer  "title_phrase_id"
     t.integer  "summary_phrase_id"
     t.integer  "source_phrase_id"
-    t.string   "image_url_phrase_id"
+    t.integer  "image_url_phrase_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
