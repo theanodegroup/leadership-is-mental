@@ -69,8 +69,12 @@ class PagesController < ApplicationController
     @posts = FacebookPost.all
   end
 
+  def articles
+    @articles = Article.all.existing
+  end
+
   def news
-    @aricles = LeadershipArticle.all
+    @leadership_articles = LeadershipArticle.all
   end
 
   def contact

@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title_phrase_id) %></th>
       <th><%= model_class.human_attribute_name(:summary_phrase_id) %></th>
-      <th><%= model_class.human_attribute_name(:source_phrase_id) %></th>
+      <th><%= model_class.human_attribute_name(:body_phrase_id) %></th>
       <th><%= model_class.human_attribute_name(:image_url_phrase_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,7 +20,7 @@
         <td><%= link_to article.id, article_path(article) %></td>
         <td><%= article.title_phrase_id %></td>
         <td><%= article.summary_phrase_id %></td>
-        <td><%= article.source_phrase_id %></td>
+        <td><%= article.body_phrase_id %></td>
         <td><%= article.image_url_phrase_id %></td>
         <td><%=l article.created_at %></td>
         <td>
