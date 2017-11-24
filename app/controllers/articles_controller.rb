@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :show, :edit, :update, :destroy] # Require admin
+  before_action :authenticate_user!, except: [:show]
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
