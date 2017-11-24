@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :articles, only: [:show]
+  resources :articles, only: [:show, :destroy]
   resources :articles, path: 'admin/articles'
   resources :facebook_posts
   resources :leadership_articles

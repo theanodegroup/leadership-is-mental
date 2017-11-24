@@ -1,10 +1,10 @@
 class Article < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  belongs_to :title_phrase, class_name: PhrasingPhrase
-  belongs_to :summary_phrase, class_name: PhrasingPhrase
-  belongs_to :body_phrase, class_name: PhrasingPhrase
-  belongs_to :image_url_phrase, class_name: PhrasingPhrase
+  belongs_to :title_phrase, class_name: PhrasingPhrase, :dependent => :delete
+  belongs_to :summary_phrase, class_name: PhrasingPhrase, :dependent => :delete
+  belongs_to :body_phrase, class_name: PhrasingPhrase, :dependent => :delete
+  belongs_to :image_url_phrase, class_name: PhrasingPhrase, :dependent => :delete
 
 
   default_scope { order(created_at: :desc) }
@@ -15,8 +15,9 @@ class Article < ActiveRecord::Base
 
   scope :listable, -> { has_title.has_summary.has_body }
 
+  # Due to how articles are handled, they are always created,
+  #  so after_create should be equivilent to after_initalize
   after_create :phrase_it
-
 
   def listable?
     fields = [:title, :summary, :body]
@@ -41,10 +42,13 @@ class Article < ActiveRecord::Base
   [:title, :summary, :body, :image_url].each do |field|
     define_method field do
       phrase = self.send("#{field}_phrase")
-      if phrase.value.present? && phrase.value != phrase.key
-        phrase.value
+      if phrase.present?
+        if phrase.value.present? && phrase.value != phrase.key
+          phrase.value
+        else
+          ''
+        end
       else
-        ''
       end
     end
 
