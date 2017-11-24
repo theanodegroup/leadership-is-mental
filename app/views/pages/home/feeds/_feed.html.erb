@@ -52,7 +52,7 @@
     <div class="panel-footer text-right">
       <%= render partial: 'editable/size', locals: { phrase: footer_text } %>
       <div style='<%= " !important" if font_size > 0 %>'>
-        <%= link_to footer_text, footer_source, "data-turbolinks" => "false" %>
+        <%= link_to footer_text, footer_source %>
       </div>
     </div>
   <% end %>
