@@ -8,6 +8,9 @@
 <br>
 
 <p>Note: The above Quill editor changes are saved when the save button is clicked in the quill editor modal</p>
+
+<%= link_to 'View Articles',
+            articles_path, :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
             article_path(@article),
             :method => 'delete',

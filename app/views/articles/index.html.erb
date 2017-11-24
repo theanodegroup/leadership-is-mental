@@ -17,7 +17,7 @@
         <td><%=l article.created_at %></td>
         <td>
           <%= link_to 'Show',
-                      edit_article_path(article), :class => 'btn btn-default btn-xs' %>
+                      article_path(article), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_article_path(article), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
