@@ -12,19 +12,34 @@ class ShortUrl < ActiveRecord::Base
 
       data = Bitly.client.shorten(ShortUrl.standardize_url(url))
       puts "Updating"
-      self.update({
+      update_data = {
         short_url: data.try(:short_url),
         response_data: parse_response_data(data)
-      })
+      }
     rescue StandardError => e
+      # Report and store the error
       puts "Shorten Error: #{e.class} #{e.message}"
+      update_data = {
+        response_data: {
+          error: {
+            class: e.class,
+            message: e.message
+          }
+        }
+      }
     end
+      self.update(update_data)
   end
 
   def self.fetch(url)
     # Fetchs short url, shortening it if needed and returning the URL if there are any issues
     begin
-      return ShortUrl.find_or_create_by!(url: url).try(:short_url)
+      short_url = ShortUrl.find_or_create_by!(url: url).try(:short_url)
+      if short_url.nil? && Random.rand >= 0.95
+        # 1 in 20 change of trying again
+        short_url = ShortUrl.find_or_create_by!(url: url).try(:short_url)
+      end
+      return short_url
     rescue StandardError => e
       puts "Fetch Error: #{e.class} #{e.message}"
     end
