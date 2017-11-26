@@ -16,7 +16,15 @@
 <h2>Image URL</h2>
 <%= render partial: 'editable/text', locals: { phrase: @article.image_url_phrase_name } %>
 
-<h2>Short URL (For reference)</h2>
-<% short_url = ShortUrl.fetch(@article.source, true) %>
-<%= link_to short_url, short_url %>
-<p>Contact developer right away if short url doesn't show up or isn't short</p>
+<h2>URLs (For reference)</h2>
+<dl class="dl-horizontal">
+  <% long_url = @article.source %>
+  <% short_url = ShortUrl.fetch(long_url, true) %>
+  <dt><strong>Long URL:</strong></dt>
+  <dd><%= link_to long_url, long_url %></dd>
+  <dt><strong>Short URL:</strong></dt>
+  <dd><%= link_to short_url, short_url %></dd>
+</dl>
+
+
+<p>Contact developer right away if short url doesn't show up, isn't short or either link is broken.</p>
