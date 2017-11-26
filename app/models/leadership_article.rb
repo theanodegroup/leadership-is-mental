@@ -4,4 +4,10 @@ class LeadershipArticle < ActiveRecord::Base
   paginates_per 10
 
   default_scope { order(pub_date: :desc) }
+
+  after_create :get_short_url
+
+  def get_short_url
+    ShortUrl.fetch(source) if source.present?
+  end
 end
