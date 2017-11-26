@@ -10,7 +10,7 @@ class ShortUrl < ActiveRecord::Base
     begin
       puts "Fetching data from Bitly"
 
-      data = Bitly.client.shorten(ShortUrl.standardize_url(url))
+      data = Bitly.client.shorten(url)
       puts "Updating"
       update_data = {
         short_url: data.try(:short_url),
@@ -31,9 +31,14 @@ class ShortUrl < ActiveRecord::Base
       self.update(update_data)
   end
 
-  def self.fetch(url)
+  def self.fetch(url, standardize)
     # Fetchs short url, shortening it if needed and returning the URL if there are any issues
     begin
+      if standardize
+        puts "Standardize URL: #{url}"
+        url = ShortUrl.standardize_url(url)
+        puts "=> #{url}"
+      end
       short_url = ShortUrl.find_or_create_by!(url: url).try(:short_url)
       if short_url.nil? && Random.rand >= 0.95
         # 1 in 20 change of trying again
