@@ -5,7 +5,13 @@
   </div>
   <div class='col-xs-8 text-left'>
     <%= sanitize article.summary %>
-    <%= social_share_button_tag(article.title) %>
+    <%= social_share_button_tag(article.title,
+                                allow_sites: %w(twitter),
+                                url: ShortUrl.fetch(article.source), via: 'dayomedia') %>
+    <%= social_share_button_tag(article.title,
+                                allow_sites: %w(linkedin),
+                                url: article.source) %>
+    <br>
     <div class="fb-like" data-href="<%= article.source %>"
              data-layout="button_count" data-action="like" data-size="small"
              data-show-faces="true" data-share="true"></div>
