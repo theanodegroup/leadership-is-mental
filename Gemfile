@@ -46,6 +46,9 @@ gem "recaptcha", require: "recaptcha/rails"
 
 gem 'sitemap_generator'
 
+# URLs
+gem 'bitly'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
