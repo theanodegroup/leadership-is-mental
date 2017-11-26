@@ -4,10 +4,9 @@
 <% breadcrumb @breadcrumb %>
 
 
-<% @leadership_articles = @leadership_articles.page(params[:page]).per(5) %>
-<% @leadership_articles.each do |article| %>
+<% @articles = @articles.page(params[:page]).per(5) %>
+<% @articles.each do |article| %>
   <%= render partial: 'shared/article', locals: { article: article } %>
 <% end %>
 
-
-<%= paginate @leadership_articles %>
+<%= paginate @articles %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :articles, only: [:show, :destroy]
+  resources :articles, path: 'admin/articles'
   resources :facebook_posts
   resources :leadership_articles
   resources :documents
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   resources :contacts, path: 'newsletter_signups'
   get 'blog', to: 'pages#blog', as: :blog
   get 'news', to: 'pages#news', as: :news
+  get 'articles', to: 'pages#articles', as: :articles_page
   get 'contact', to: 'pages#contact', as: :contact_us
   get 'newsletter-signup', to: 'pages#newsletter_signup', as: :newsletter_signup
 

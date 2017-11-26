@@ -1,0 +1,17 @@
+<p>
+  Note: Article currently becomes visible once the title, summary and body has been filled out.<br>
+  Note: Image URL is optional and isn't validated. Recommend deleting text then copy/paste of any image URLs.
+</p>
+
+
+<h2>Title</h2>
+<%= render partial: 'editable/sized_text', locals: { phrase: @article.title_phrase_name } %>
+
+<h2>Summary</h2>
+<%= render partial: 'editable/sized_text', locals: { phrase: @article.summary_phrase_name } %>
+
+<h2>Body</h2>
+<%= render partial: 'editable/sized_text', locals: { phrase: @article.body_phrase_name } %>
+
+<h2>Image URL</h2>
+<%= render partial: 'editable/text', locals: { phrase: @article.image_url_phrase_name } %>
