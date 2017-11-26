@@ -24,8 +24,6 @@ class ShortUrl < ActiveRecord::Base
   def self.fetch(url)
     # Fetchs short url, shortening it if needed and returning the URL if there are any issues
     begin
-      short_url = ShortUrl.find_or_create_by!(url: url)
-
       return ShortUrl.find_or_create_by!(url: url).try(:short_url)
     rescue StandardError => e
       puts "Fetch Error: #{e.class} #{e.message}"
