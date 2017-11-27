@@ -4,8 +4,15 @@
     <%= image_tag(article.image_url, class: 'img-responsive center-block', style: 'max-height: 7em') if article.image_url.present? %>
   </div>
   <div class='col-xs-8 text-left'>
+    <% short_url = article.class == 'Article' ? ShortUrl.fetch(article.source, true) : ShortUrl.fetch(article.source, false) %>
     <%= sanitize article.summary %>
-    <%= social_share_button_tag(article.title) %>
+    <%= social_share_button_tag(article.title,
+                                allow_sites: %w(twitter),
+                                url: short_url, via: 'dayomedia') %>
+    <%= social_share_button_tag(article.title,
+                                allow_sites: %w(linkedin),
+                                url: article.source) %>
+    <br>
     <div class="fb-like" data-href="<%= article.source %>"
              data-layout="button_count" data-action="like" data-size="small"
              data-show-faces="true" data-share="true"></div>
@@ -15,4 +22,5 @@
       <i class="fa fa-chevron-circle-right fa-5x" aria-hidden="true"></i>
     <% end %>
   </div>
+    <% puts "short_url: #{short_url}" %>
 </div>

@@ -18,6 +18,12 @@ class Article < ActiveRecord::Base
   # Due to how articles are handled, they are always created,
   #  so after_create should be equivilent to after_initalize
   after_create :phrase_it
+  after_save :get_short_url
+
+  def get_short_url
+    # @todo: This should update the existing one via checking for changes
+    ShortUrl.fetch(source) if source.present?
+  end
 
   def listable?
     fields = [:title, :summary, :body]
@@ -58,6 +64,7 @@ class Article < ActiveRecord::Base
   end
 
   def source
-    article_path(self)
+    # @todo: Add slug support
+    article_url(self)
   end
 end
