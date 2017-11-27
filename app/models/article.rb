@@ -22,27 +22,29 @@ class Article < ActiveRecord::Base
   after_save :get_short_url
 
   def self.find_article(slug_or_id)
-    slug_or_id = Article.new.auto_slug(slug_or_id)
     article_by_id = Article.find_by(id: slug_or_id)
     return article_by_id if article_by_id.present?
 
-    canidates = PhrasingPhrase.where(value: slug_or_id)
-    return nil if canidates.empty?
+    possible_slug = Article.new.auto_slug(slug_or_id)
 
-    canidates.find_each do |canidate|
-      # Validate canidate
-      key = canidate.key
-      next unless key.ends_with?('/slug')
-      next unless key.starts_with?('quill/article/')
-      possible_id = key.gsub("/slug", "").gsub("quill/article/", "")
-      next unless key == "quill/article/#{possible_id}/slug"
-      next unless possible_id.to_i > 0
+    canidates = PhrasingPhrase.where(value: possible_slug)
 
-      # Determined the correct PhrasingPhrase, now convert to article
-      return Article.find_by(slug_phrase_id: canidate.id)
+    if canidates.present?
+      canidates.find_each do |canidate|
+        # Validate canidate
+        key = canidate.key
+        next unless key.ends_with?('/slug')
+        next unless key.starts_with?('quill/article/')
+        possible_id = key.gsub("/slug", "").gsub("quill/article/", "")
+        next unless key == "quill/article/#{possible_id}/slug"
+        next unless possible_id.to_i > 0
+
+        # Determined the correct PhrasingPhrase, now convert to article
+        article = Article.find_by(slug_phrase_id: canidate.id)
+        return article unless article.nil?
+      end
     end
-
-    nil
+    raise "No ID or Slug Found for |> #{slug_or_id.inspect} <|"
   end
 
   def get_short_url
@@ -53,7 +55,7 @@ class Article < ActiveRecord::Base
   def sluggify
     phrase = create_or_fetch_phrase(:slug)
     current_slug = auto_slug(slug)
-    if current_slug.present?
+    if current_slug
       phrase.update(value: current_slug)
     else
       phrase.update(value: auto_slug)
@@ -99,7 +101,7 @@ class Article < ActiveRecord::Base
 
   def auto_slug(value=nil)
     value = title if value.nil?
-    "#{strip_tags(value).parameterize}"
+    "#{strip_tags(value).to_s.parameterize}-#{Devise.friendly_token(10)}"
   end
 
   def source
