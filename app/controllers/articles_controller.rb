@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def new
     # New action creats a new article as articles are basically just association maps.
     @article = Article.create
-    render :edit
+    redirect_to edit_article_path(@article)
   end
 
   # GET /articles/1/edit
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.find_article(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

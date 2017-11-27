@@ -7,6 +7,9 @@
 <h2>Title</h2>
 <%= render partial: 'editable/sized_text', locals: { phrase: @article.title_phrase_name } %>
 
+<h2>Slug</h2>
+<%= render partial: 'editable/sized_text', locals: { phrase: @article.slug_phrase_name } %>
+
 <h2>Summary</h2>
 <%= render partial: 'editable/sized_text', locals: { phrase: @article.summary_phrase_name } %>
 

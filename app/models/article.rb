@@ -1,11 +1,12 @@
 class Article < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::SanitizeHelper
 
   belongs_to :title_phrase, class_name: PhrasingPhrase, :dependent => :delete
   belongs_to :summary_phrase, class_name: PhrasingPhrase, :dependent => :delete
   belongs_to :body_phrase, class_name: PhrasingPhrase, :dependent => :delete
   belongs_to :image_url_phrase, class_name: PhrasingPhrase, :dependent => :delete
-
+  belongs_to :slug_phrase, class_name: PhrasingPhrase, :dependent => :delete
 
   default_scope { order(created_at: :desc) }
 
@@ -20,9 +21,43 @@ class Article < ActiveRecord::Base
   after_create :phrase_it
   after_save :get_short_url
 
+  def self.find_article(slug_or_id)
+    slug_or_id = Article.new.auto_slug(slug_or_id)
+    article_by_id = Article.find_by(id: slug_or_id)
+    return article_by_id if article_by_id.present?
+
+    canidates = PhrasingPhrase.where(value: slug_or_id)
+    return nil if canidates.empty?
+
+    canidates.find_each do |canidate|
+      # Validate canidate
+      key = canidate.key
+      next unless key.ends_with?('/slug')
+      next unless key.starts_with?('quill/article/')
+      possible_id = key.gsub("/slug", "").gsub("quill/article/", "")
+      next unless key == "quill/article/#{possible_id}/slug"
+      next unless possible_id.to_i > 0
+
+      # Determined the correct PhrasingPhrase, now convert to article
+      return Article.find_by(slug_phrase_id: canidate.id)
+    end
+
+    nil
+  end
+
   def get_short_url
     # @todo: This should update the existing one via checking for changes
-    ShortUrl.fetch(source) if source.present?
+    ShortUrl.fetch(source, true) if source.present?
+  end
+
+  def sluggify
+    phrase = create_or_fetch_phrase(:slug)
+    current_slug = auto_slug(slug)
+    if current_slug.present?
+      phrase.update(value: current_slug)
+    else
+      phrase.update(value: auto_slug)
+    end
   end
 
   def listable?
@@ -30,22 +65,21 @@ class Article < ActiveRecord::Base
     fields.any? { |field| !self.send(field).present? }
   end
 
-
   def phrase_it
     update_hash = {}
 
-    fields = [:title, :summary, :body, :image_url]
+    fields = [:title, :summary, :body, :image_url, :slug]
     fields.each do |field|
       full_field_name = "#{field}_phrase_id".to_sym
-      key = "quill/article/#{id}/#{field}"
-      phrase_id = PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key).id
+      phrase_id = create_or_fetch_phrase(field).id
       update_hash[full_field_name] = phrase_id
     end
+
 
     self.update(update_hash)
   end
 
-  [:title, :summary, :body, :image_url].each do |field|
+  [:title, :summary, :body, :image_url, :slug].each do |field|
     define_method field do
       phrase = self.send("#{field}_phrase")
       if phrase.present?
@@ -63,8 +97,17 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def auto_slug(value=nil)
+    value = title if value.nil?
+    "#{strip_tags(value).parameterize}"
+  end
+
   def source
-    # @todo: Add slug support
     article_url(self)
+  end
+
+  def create_or_fetch_phrase(field)
+    key = "quill/article/#{id}/#{field}"
+    PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key)
   end
 end

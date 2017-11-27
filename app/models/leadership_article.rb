@@ -8,6 +8,6 @@ class LeadershipArticle < ActiveRecord::Base
   after_create :get_short_url
 
   def get_short_url
-    ShortUrl.fetch(source) if source.present?
+    ShortUrl.fetch(source, false) if source.present?
   end
 end
