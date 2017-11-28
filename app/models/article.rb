@@ -41,6 +41,8 @@ class Article < ActiveRecord::Base
 
         # Determined the correct PhrasingPhrase, now convert to article
         article = Article.find_by(slug_phrase_id: canidate.id)
+
+        article.try(:sluggify)
         return article unless article.nil?
       end
     end
@@ -54,11 +56,12 @@ class Article < ActiveRecord::Base
 
   def sluggify
     phrase = create_or_fetch_phrase(:slug)
-    current_slug = auto_slug(slug)
-    if current_slug
-      phrase.update(value: current_slug)
+    current_slug = clean_slug(slug)
+    if current_slug.present?
+      puts "A"
+      phrase.update(value: clean_slug(slug))
     else
-      phrase.update(value: auto_slug)
+      phrase.update(value: auto_slug(current_slug))
     end
   end
 
@@ -99,13 +102,20 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def clean_slug(value)
+    strip_tags(value).to_s.parameterize
+  end
+
   def auto_slug(value=nil)
-    value = title if value.nil?
-    "#{strip_tags(value).to_s.parameterize}-#{Devise.friendly_token(10)}"
+    value = clean_slug(value)
+
+    value = self.title unless value.present?
+    # @todo, could add a devise token to make unique
+    "#{clean_slug(value)}"
   end
 
   def source
-    article_url(self)
+    article_url(id: self.slug || self.id)
   end
 
   def create_or_fetch_phrase(field)
