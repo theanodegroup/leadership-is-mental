@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get 'terms_of_use', to: 'pages#terms_of_use', as: :terms_of_use
   get 'sitemap', to: 'pages#sitemap', as: :sitemap
 
+  get 'settings', to: 'pages#settings', as: :settings
+
   root 'pages#home'
 end
 
