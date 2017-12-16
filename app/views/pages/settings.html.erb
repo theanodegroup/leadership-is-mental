@@ -4,20 +4,20 @@
 <% breadcrumb @breadcrumb %>
 
 <h2>Articles Title</h2>
-<%= render partial: 'editable/text', locals: { phrase: "quill/#{partial_path}/articles/title" } %>
+<%= render partial: 'editable/text', locals: { phrase: "#{Article::SIZE_SETTING_PREFIX}/articles/title" } %>
 <%= link_to 'View Page Example', articles_path %>
 
 <h2>Articles body</h2>
-<%= render partial: 'editable/text', locals: { phrase: "quill/#{partial_path}/articles/body" } %>
+<%= render partial: 'editable/text', locals: { phrase: "#{Article::SIZE_SETTING_PREFIX}/articles/body" } %>
 <%= link_to 'View Page Example', articles_path %>
 
 <hr>
 <h2>Article Title</h2>
-<%= render partial: 'editable/text', locals: { phrase: "quill/#{partial_path}/articles/title" } %>
+<%= render partial: 'editable/text', locals: { phrase: "#{Article::SIZE_SETTING_PREFIX}/article/title" } %>
 <%= link_to 'View Page Example', article_path(Article.all.first) %>
 
 <h2>Article body</h2>
-<%= render partial: 'editable/text', locals: { phrase: "quill/#{partial_path}/articles/body" } %>
+<%= render partial: 'editable/text', locals: { phrase: "#{Article::SIZE_SETTING_PREFIX}/article/body" } %>
 <%= link_to 'View Page Example', article_path(Article.all.first) %>
 
 <p>Note: Example links for Article pages may error if there are no articles.</p>

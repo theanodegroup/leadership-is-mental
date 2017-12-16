@@ -16,6 +16,8 @@ class Article < ActiveRecord::Base
 
   scope :listable, -> { has_title.has_summary.has_body }
 
+  SIZE_SETTING_PREFIX = 'quill/settings'
+
   # Due to how articles are handled, they are always created,
   #  so after_create should be equivilent to after_initalize
   after_create :phrase_it

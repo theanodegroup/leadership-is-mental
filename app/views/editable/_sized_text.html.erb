@@ -1,7 +1,9 @@
-<% js_phrase = phrase&.gsub('/', '-')&.gsub('_', '-') %>
+<% js_phrase = "#{"#{local_assigns[:size_phrase]}/size" || phrase}"&.gsub('/', '-')&.gsub('_', '-') %>
+<% phrase_size =  "#{local_assigns[:size_phrase] || phrase}/size" %>
+<% puts "phrase_size: #{phrase_size}" %>
 <div class="<%= js_phrase %>">
   <style>
-    <% heading_font_size = phrase_lookup("#{phrase}/size").to_i %>
+    <% heading_font_size = phrase_lookup(phrase_size).to_i %>
     <% if heading_font_size > 0 %>
       .<%= js_phrase %> .panel-heading p {
         font-size: <%= heading_font_size %>px;
@@ -9,8 +11,8 @@
     <% end %>
   </style>
   <div class="panel-heading">
-    <% font_size = phrase_lookup("#{phrase}/size").to_i %>
-    <%= render partial: 'editable/size', locals: { phrase: phrase } %>
+    <% font_size = phrase_lookup(phrase_size).to_i %>
+    <%= render partial: 'editable/size', locals: { phrase: local_assigns[:size_phrase] || phrase  } %>
     <div style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'>
       <%= render partial: "editable/#{editable_type(phrase)}",
                  locals: { phrase: phrase } %>
