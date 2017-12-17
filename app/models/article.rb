@@ -117,7 +117,7 @@ class Article < ActiveRecord::Base
   end
 
   def source
-    article_url(id: self.slug || self.id)
+    article_url(id: clean_slug(slug) || self.id)
   end
 
   def create_or_fetch_phrase(field)

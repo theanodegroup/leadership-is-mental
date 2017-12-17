@@ -22,7 +22,7 @@
 <h2>URLs (For reference)</h2>
 <dl class="dl-horizontal">
   <% long_url = @article.source %>
-  <% short_url = ShortUrl.fetch(long_url, true) %>
+  <% short_url = @article.get_short_url %>
   <dt><strong>Long URL:</strong></dt>
   <dd><%= link_to long_url, long_url %></dd>
   <dt><strong>Short URL:</strong></dt>
