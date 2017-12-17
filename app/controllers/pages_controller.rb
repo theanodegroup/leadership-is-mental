@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:quill_update, :show_quill] # Require admin
+  before_action :authenticate_user!, only: [:quill_update, :show_quill, :settings] # Require admin
 
   before_action :set_pages_vars, except: [:quill_update, :show_quill, :newsletter_signup]
 
@@ -70,6 +70,9 @@ class PagesController < ApplicationController
   end
 
   def sitemap
+  end
+
+  def settings
   end
 
 private

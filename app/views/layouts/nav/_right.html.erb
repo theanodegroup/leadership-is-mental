@@ -16,6 +16,7 @@
           FacebookPost].each do |model| %>
         <%= menu_item(model.model_name.human.pluralize.titleize, polymorphic_path(model)) %>
       <% end %>
+      <%= menu_item('Settings', settings_path) %>
       <%= menu_item('Logout', destroy_user_session_path, method: :delete) %>
     <% end %>
   <% end %>
