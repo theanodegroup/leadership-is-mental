@@ -1,5 +1,5 @@
-<% title_phrase = "#{Article::SIZE_SETTING_PREFIX}/article/title" %>
-<% body_phrase=  "#{Article::SIZE_SETTING_PREFIX}/article/body" %>
+<% title_phrase = "#{Article::SIZE_SETTING_PREFIX}/articles/title" %>
+<% body_phrase=  "#{Article::SIZE_SETTING_PREFIX}/articles/body" %>
 
 <% phrase_size_title  =  "#{title_phrase}/size" %>
 <% phrase_size_body =  "#{body_phrase}/size" %>
@@ -36,10 +36,10 @@
         <%= render partial: 'editable/size', locals: { phrase: body_phrase  } %>
         <span style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= sanitize article.summary %></span>
 
-        <%= social_share_button_tag(article.title,
+        <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(twitter),
                                     url: short_url, via: 'dayomedia') %>
-        <%= social_share_button_tag(article.title,
+        <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(linkedin),
                                     url: article.source) %>
         <br>

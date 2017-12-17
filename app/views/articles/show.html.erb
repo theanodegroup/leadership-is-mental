@@ -2,13 +2,13 @@
 <div class="page-header">
   <h1><%= render partial: 'editable/sized_text',
                  locals: { phrase: @article.title_phrase_name,
-                           size_phrase: "#{Article::SIZE_SETTING_PREFIX}/articles/title" } %></h1>
+                           size_phrase: "#{Article::SIZE_SETTING_PREFIX}/article/title" } %></h1>
 </div>
 
 
 <%= render partial: 'editable/sized_text',
                locals: { phrase: @article.body_phrase_name,
-                         size_phrase: "#{Article::SIZE_SETTING_PREFIX}/articles/body" } %>
+                         size_phrase: "#{Article::SIZE_SETTING_PREFIX}/article/body" } %>
 
 <% if user_signed_in? %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
