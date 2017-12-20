@@ -14,14 +14,16 @@ class Article < ActiveRecord::Base
   scope :has_summary, -> { joins(:summary_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
   scope :has_body, -> { joins(:body_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
 
-  scope :listable, -> { has_title.has_summary.has_body }
-
   SIZE_SETTING_PREFIX = 'quill/settings'
 
   # Due to how articles are handled, they are always created,
   #  so after_create should be equivilent to after_initalize
   after_create :phrase_it
   after_save :get_short_url
+
+  def self.listable
+    where(id: (self.has_title.pluck(:id) & self.has_summary.pluck(:id) & self.has_body.pluck(:id)))
+  end
 
   def self.find_article(slug_or_id)
     article_by_id = Article.find_by(id: slug_or_id)
