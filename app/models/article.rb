@@ -10,9 +10,11 @@ class Article < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
-  scope :has_title, -> { joins(:title_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
-  scope :has_summary, -> { joins(:summary_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
-  scope :has_body, -> { joins(:body_phrase).where.not(phrasing_phrases: { value: [nil, ''] })    }
+  BLANK_PHRASES = [nil, '', "<p><br></p>", "<p></p>"]
+
+  scope :has_title, -> { joins(:title_phrase).where.not(phrasing_phrases: { value: BLANK_PHRASES })    }
+  scope :has_summary, -> { joins(:summary_phrase).where.not(phrasing_phrases: { value: BLANK_PHRASES })    }
+  scope :has_body, -> { joins(:body_phrase).where.not(phrasing_phrases: { value: BLANK_PHRASES })    }
 
   SIZE_SETTING_PREFIX = 'quill/settings'
 
@@ -22,7 +24,7 @@ class Article < ActiveRecord::Base
   after_save :get_short_url
 
   def self.listable
-    where(id: (self.has_title.pluck(:id) & self.has_summary.pluck(:id) & self.has_body.pluck(:id)))
+    self.where(id: (self.has_title.pluck(:id) & self.has_summary.pluck(:id) & self.has_body.pluck(:id)))
   end
 
   def self.find_article(slug_or_id)
