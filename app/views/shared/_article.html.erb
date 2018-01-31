@@ -36,7 +36,9 @@
         <%= render partial: 'editable/size', locals: { phrase: body_phrase  } %>
         <span style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= sanitize article.summary %></span>
 
-        <%= social_share_button_tag(allow_sites: %w(twitter)) %>
+        <%= social_share_button_tag(strip_tags(article.title),
+                                    allow_sites: %w(twitter),
+                                    url: short_url, via: 'dayomedia') %>
         <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(linkedin),
                                     url: article.source) %>
