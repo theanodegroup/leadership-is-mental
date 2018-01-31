@@ -7,7 +7,7 @@
     <meta property="og:image" content="<%= @article.image_url %>">
     <meta property="og:url" content="<%= @article.source %>">
 
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="<%= strip_tags @article.summary %>">
     <meta name="twitter:site" content="@dayomedia">
     <meta name="twitter:title" content="<%= @article.clean_title %>">
     <meta name="twitter:description" content="<%= strip_tags @article.summary %>">
