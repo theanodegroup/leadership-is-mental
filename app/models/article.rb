@@ -132,4 +132,8 @@ class Article < ActiveRecord::Base
   def clean_title
     strip_tags(title)
   end
+
+  def clean_summary
+    strip_tags(summary)
+  end
 end
