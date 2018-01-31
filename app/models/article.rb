@@ -128,4 +128,8 @@ class Article < ActiveRecord::Base
     key = "quill/article/#{id}/#{field}"
     PhrasingPhrase.find_or_create_by(locale: I18n.locale, key: key)
   end
+
+  def clean_title
+    strip_tags(title)
+  end
 end

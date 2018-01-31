@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <% if @article.image_url.present? %>
-    <meta property="og:title" content="<%= @article.title %>">
+    <meta property="og:title" content="<%= @article.clean_title %>">
     <meta property="og:type" content="article">
     <meta property="og:image" content="<%= @article.image_url %>">
     <meta property="og:url" content="<%= @article.source %>">
