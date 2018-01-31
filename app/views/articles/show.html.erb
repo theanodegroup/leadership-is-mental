@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <% if @article.image_url.present? %>
+    <meta property="og:image" content="<%= @article.image_url %>">
+  <% end %>
+<% end %>
+
 <%- model_class = Article -%>
 <div class="page-header">
   <h1><%= render partial: 'editable/sized_text',
