@@ -41,7 +41,7 @@
                                     url: short_url, via: 'dayomedia') %>
         <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(linkedin),
-                                    url: article.source) %>
+                                    url: article.source + '?v1') %>
         <br>
         <div class="fb-like" data-href="<%= article.source %>"
                  data-layout="button_count" data-action="like" data-size="small"
