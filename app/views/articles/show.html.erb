@@ -5,7 +5,7 @@
     <meta property='og:description' content='<%= strip_tags @article.summary %>'>
     <meta property="og:type" content="article">
     <meta property="og:image" content="<%= @article.image_url %>">
-    <% if params[:linkedin] %>
+    <% if params[:ln] %>
       <meta property="og:url" content="<%= @article.source %>">
     <% end %>
 
