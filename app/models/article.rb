@@ -120,8 +120,10 @@ class Article < ActiveRecord::Base
     "#{clean_slug(value)}"
   end
 
-  def source
-    article_url(id: clean_slug(slug) || self.id)
+  def source(ln = nil)
+    options = { id: clean_slug(slug) || self.id }
+    options[:ln] = true if ln.present?
+    article_url(options)
   end
 
   def create_or_fetch_phrase(field)
