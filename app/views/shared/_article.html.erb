@@ -36,12 +36,15 @@
         <%= render partial: 'editable/size', locals: { phrase: body_phrase  } %>
         <span style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= sanitize article.summary %></span>
 
+        <% cache_seconds = ENV['ARTICLE_CACHE_SECONDS'].to_i %>
+        <% cache_stamp = (Time.current.to_i / cache_seconds).floor * cache_seconds %>
+
         <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(twitter),
                                     url: short_url, via: 'dayomedia') %>
         <%= social_share_button_tag(strip_tags(article.title),
                                     allow_sites: %w(linkedin),
-                                    url: article.source + '?v1') %>
+                                    url: article.source + "?#{Time.current.to_date.to_i}") %>
         <br>
         <div class="fb-like" data-href="<%= article.source %>"
                  data-layout="button_count" data-action="like" data-size="small"
