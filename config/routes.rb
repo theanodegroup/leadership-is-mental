@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'disclaimer', to: 'pages#disclaimer', as: :disclaimer
   get 'legal', to: 'pages#legal', as: :legal
-  get 'terms_of_use', to: 'pages#terms_of_use', as: :terms_of_use
+  get 'privacy_policy', to: 'pages#privacy_policy', as: :privacy_policy
   get 'sitemap', to: 'pages#sitemap', as: :sitemap
 
   get 'settings', to: 'pages#settings', as: :settings

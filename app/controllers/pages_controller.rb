@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     blog: { title: 'Blog'},
     contact_us: { title: 'Contact Us'},
     newsletter_signup: { title: 'Newsletter Signup'},
-    terms_of_use: { title: 'Terms of Use'},
+    privacy_policy: { title: '"Privacy Policy"'},
     disclaimer: { title: 'Disclaimer'},
     legal: { title: 'Legal'},
   }
@@ -66,7 +66,7 @@ class PagesController < ApplicationController
   def legal
   end
 
-  def terms_of_use
+  def privacy_policy
   end
 
   def sitemap
