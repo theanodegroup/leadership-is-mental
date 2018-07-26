@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'poc/demo'
+
   resources :articles, only: [:show, :destroy]
   resources :articles, path: 'admin/articles'
   resources :facebook_posts
