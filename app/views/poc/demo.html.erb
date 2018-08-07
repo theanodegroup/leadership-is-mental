@@ -1,15 +1,43 @@
 <h1>Proof of Concept Demo</h1>
 
-<h2>Embed Video</h2>
+<% @products.each do |product| %>
+  <% next unless product.is_active %>
+  <h2><%= product.name %> |Product|</h2>
+  <%= link_to product.links.product_page, target: "_blank" do %>
+    <%= image_tag product.thumbnail['medium'] %>
+  <% end %>
 
-<h2>List Products</h2>
+  <% Vhx::Collection.list(product: product.links.self).each do |collection| %>
+    <% next unless collection.is_available %>
+    <h3><%= collection.name %> |Collection|</h3>
+    <p><b><%= collection.description %></b></p>
+    <%= link_to collection.links.collection_page, target: "_blank" do %>
+      <%= image_tag collection.thumbnail['medium'] %>
+    <% end %>
+    <% collection.items.each do |item| %>
+      <h4><%= item.name %> |item|</h4>
+      <p><small><%= item.description %></small></p>
+      <%= link_to item.links.video_page, target: "_blank" do %>
+        <%= image_tag item.thumbnail['medium'] %>
+      <% end %>
+    <% end %>
+    <hr>
+  <% end %>
 
-<h2>List Collections</h2>
 
-<h2>List Collections</h2>
+<% end %>
+
+
 
 <h2>Search Demo</h2>
 
 <h2>Duration Filter demo</h2>
 
 <h2>List specific Type of Collections</h2>
+
+<h2>List Products</h2>
+<% @products.each do |product| %>
+<% end %>
+
+<script src="https://cdn.vhx.tv/assets/api.js"></script>
+<script src="https://cdn.vhx.tv/assets/player.js"></script>
