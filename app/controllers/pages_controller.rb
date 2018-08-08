@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     privacy_policy: { title: '"Privacy Policy"'},
     disclaimer: { title: 'Disclaimer'},
     legal: { title: 'Legal'},
+    courses: { title: 'Courses'},
   }
 
   # AJAX
@@ -35,6 +36,16 @@ class PagesController < ApplicationController
   end
 
   def events
+  end
+
+  def courses
+    begin
+      @vhx = Vhx.setup({ api_key: ENV['VHX_API_KEY'] })
+      @products = Vhx::Product.list
+    rescue Vhx::VhxError
+      # Handle error
+      @products = []
+    end
   end
 
   def free_ebook

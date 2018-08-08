@@ -5,11 +5,11 @@ class PocController < ApplicationController
 
   def demo
     begin
-      @collections = Vhx::Collection.list
+      @vhx = Vhx.setup({ api_key: ENV['VHX_API_KEY'] })
       @products = Vhx::Product.list
-      # Example Customer Create
     rescue Vhx::VhxError
       # Handle error
+      @products = []
     end
   end
 
