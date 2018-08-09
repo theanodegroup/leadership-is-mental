@@ -33,10 +33,11 @@ Rails.application.routes.draw do
 
   get 'settings', to: 'pages#settings', as: :settings
 
-
-  get '/courses', to: 'pages#courses'
-  get '/classes', to: 'pages#courses'
+  get '/courses',     to: 'pages#courses'
+  get '/classes',     to: 'pages#courses'
   get '/masterclass', to: 'pages#courses'
+
+  get 'videos_faq', to: 'pages#videos_faq', as: :videos_faq
 
   root 'pages#home'
 end

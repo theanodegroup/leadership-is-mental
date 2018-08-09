@@ -86,6 +86,9 @@ class PagesController < ApplicationController
   def settings
   end
 
+  def videos_faq
+  end
+
 private
   def set_pages_vars
     @page_name = action_name.to_sym

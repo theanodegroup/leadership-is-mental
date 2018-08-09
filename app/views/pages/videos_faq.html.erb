@@ -1,0 +1,6 @@
+<% partial_path = "pages/#{@page_name}" %>
+
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>
+
+<%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/main" } %>

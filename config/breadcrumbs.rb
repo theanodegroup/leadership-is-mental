@@ -17,6 +17,11 @@ crumb :contact_us do
   link "Contact", contact_us_path
 end
 
+crumb :videos_faq do
+  link "Videos FAQ", videos_faq_path
+  parent :courses, polymorphic_path(:courses)
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
