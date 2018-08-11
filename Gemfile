@@ -49,6 +49,9 @@ gem 'sitemap_generator'
 # URLs
 gem 'bitly'
 
+# Courses
+gem 'vhx-ruby', :git => 'https://github.com/vhx/vhx-ruby'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

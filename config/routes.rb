@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'poc/demo'
+
   resources :articles, only: [:show, :destroy]
   resources :articles, path: 'admin/articles'
   resources :facebook_posts
@@ -30,6 +32,12 @@ Rails.application.routes.draw do
   get 'sitemap', to: 'pages#sitemap', as: :sitemap
 
   get 'settings', to: 'pages#settings', as: :settings
+
+  get '/courses',     to: 'pages#courses'
+  get '/classes',     to: 'pages#courses'
+  get '/masterclass', to: 'pages#courses'
+
+  get 'videos_faq', to: 'pages#videos_faq', as: :videos_faq
 
   root 'pages#home'
 end

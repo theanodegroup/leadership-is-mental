@@ -1,0 +1,24 @@
+<% partial_path = "pages/#{@page_name}" %>
+
+<% content_for :page_header, @title %>
+<% breadcrumb @breadcrumb %>
+
+<%= render partial: "editable/quill", locals: { phrase: "quill/#{partial_path}/heading" } %>
+
+<% @products.each do |product| %>
+  <% next unless product.is_active %>
+  <h2><%= product.name %></h2>
+  <%= link_to product.links.product_page, target: "_blank" do %>
+    <%= image_tag product.thumbnail['medium'] %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+<% end %>
+
+<br>
+<%= link_to "Videos FAQ", videos_faq_path %>
+
+
+<script src="https://cdn.vhx.tv/assets/api.js"></script>
+<script src="https://cdn.vhx.tv/assets/player.js"></script>

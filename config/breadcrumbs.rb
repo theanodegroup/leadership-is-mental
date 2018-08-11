@@ -6,7 +6,7 @@ end
 [
   :about, :blog, :newsletter_signup, :what_you_get,
   :leadership_jobs, :events, :free_ebook, :disclaimer,
-  :legal, :privacy_policy, :sitemap, :news, :articles, :settings
+  :legal, :privacy_policy, :sitemap, :news, :articles, :settings, :courses,
 ].each do |breadcrumb|
   crumb breadcrumb do
     link breadcrumb.to_s.titleize, polymorphic_path(breadcrumb)
@@ -15,6 +15,11 @@ end
 
 crumb :contact_us do
   link "Contact", contact_us_path
+end
+
+crumb :videos_faq do
+  link "Videos FAQ", videos_faq_path
+  parent :courses, polymorphic_path(:courses)
 end
 
 # crumb :projects do

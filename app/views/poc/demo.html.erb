@@ -1,0 +1,15 @@
+<h1>Courses</h1>
+
+<% @products.each do |product| %>
+  <% next unless product.is_active %>
+  <h2><%= product.name %></h2>
+  <%= link_to product.links.product_page, target: "_blank" do %>
+    <%= image_tag product.thumbnail['medium'] %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+<% end %>
+
+<script src="https://cdn.vhx.tv/assets/api.js"></script>
+<script src="https://cdn.vhx.tv/assets/player.js"></script>
