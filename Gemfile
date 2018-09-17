@@ -35,7 +35,7 @@ gem 'social-share-button'
 gem 'devise'
 
 # CMS
-gem "phrasing"
+gem "phrasing", '~> 4.1.0'
 gem 'quilljs-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary' # Store uploaded Files users can download
