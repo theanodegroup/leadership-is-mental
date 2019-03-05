@@ -20,13 +20,13 @@ namespace :import_rss do
 
       rss.items.each do |item|
         begin
-          LeadershipJob.create({
+          LeadershipJob.find_or_create_by({
             title: item.title,
             link: item.link,
             pub_date: item.pubDate,
             description: item.description,
-            source: item.source.content,
-            guid: item.guid.content,
+            source: item.source&.content,
+            guid: item.guid&.content,
           })
         rescue StandardError => e
           puts "Error in Importing Job: #{e.class} => #{e.message}"
@@ -37,7 +37,7 @@ namespace :import_rss do
 
     puts "Jobs import via RSS Completed"
 
-    max_jobs = 300
+    max_jobs = 500
     puts "Limiting number of leadership jobs to #{max_jobs}"
     jobs_to_save = LeadershipJob.all.reorder(created_at: :desc).first(max_jobs)
     LeadershipJob.where.not(id: jobs_to_save).delete_all
@@ -73,17 +73,15 @@ namespace :import_rss do
 
         begin
           # @todo: Use LeadershipNewsArticle instead
-          LeadershipArticle.create({
-            title: item.title.content,
-            content: item.content.content,
-            pub_date: item.published.content,
-            summary: item.summary.content,
-            source: item.links.first.href,
-            guid: item.id.content,
+          LeadershipArticle.find_or_create_by({
+            title: item.title&.content,
+            pub_date: item.published&.content,
+            source: item.links&.first&.href,
+            guid: item.id&.content,
             image_url: image,
           })
-        rescue StandardError => e
-          puts "Error in Importing Leadership News Article: #{e.class} => #{e.message}"
+        # rescue StandardError => e
+        #   puts "Error in Importing Leadership News Article: #{e.class} => #{e.message}"
         end
       end
     end
@@ -91,9 +89,9 @@ namespace :import_rss do
 
     puts "News import via RSS Completed"
 
-    max_news = 300
+    max_news = 500
     puts "Limiting number of news articles to #{max_news}"
-    articles_to_save = LeadershipArticle.all.reorder(created_at: :desc).first(max_jobs)
+    articles_to_save = LeadershipArticle.all.reorder(created_at: :desc).first(max_news)
     LeadershipArticle.where.not(id: articles_to_save).delete_all
     puts "There are now at most #{max_news} leadership articles"
     puts "Number of leadership articles: #{LeadershipArticle.all.size}"
@@ -127,7 +125,7 @@ namespace :import_rss do
 
         begin
           # @todo: Use LeadershipNewsArticle instead
-          FacebookPost.create({
+          FacebookPost.find_or_create_by({
             title: item.title,
             url: item.link,
             pub_date: item.pubDate,
@@ -143,9 +141,9 @@ namespace :import_rss do
 
     puts "Posts import via RSS Completed"
 
-    max_news = 300
+    max_news = 500
     puts "Limiting number of posts articles to #{max_news}"
-    jobs_to_save = FacebookPost.all.reorder(created_at: :desc).first(max_jobs)
+    jobs_to_save = FacebookPost.all.reorder(created_at: :desc).first(max_news)
     FacebookPost.where.not(id: jobs_to_save).delete_all
     puts "There are now at most #{max_news} leadership posts"
     puts "Number of leadership posts: #{FacebookPost.all.size}"
