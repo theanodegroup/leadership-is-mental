@@ -28,13 +28,13 @@
       <%= render partial: 'editable/size', locals: { phrase: title_phrase  } %>
       <h3 style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= strip_tags article.title %></h3>
       <div class='col-xs-2 text-left'>
-        <%= image_tag(article.image_url, class: 'img-responsive center-block', style: 'max-height: 7em') if article.image_url.present? %>
+        <%= image_tag(article.try(:image_url), class: 'img-responsive center-block', style: 'max-height: 7em') if article.try(:image_url).present? %>
       </div>
       <div class='col-xs-8 text-left'>
         <% short_url = article.class == 'Article' ? ShortUrl.fetch(article.source, true) : ShortUrl.fetch(article.source, false) %>
         <% font_size = phrase_lookup("#{body_phrase}/size").to_i %>
         <%= render partial: 'editable/size', locals: { phrase: body_phrase  } %>
-        <span style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= sanitize article&.summary %></span>
+        <span style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'><%= sanitize article.try(:summary) %></span>
 
         <% cache_seconds = ENV['ARTICLE_CACHE_SECONDS'].to_i %>
         <% cache_seconds = 1 if cache_seconds = 0 %>

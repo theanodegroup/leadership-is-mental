@@ -39,7 +39,7 @@ namespace :import_rss do
 
     max_jobs = 500
     puts "Limiting number of leadership jobs to #{max_jobs}"
-    jobs_to_save = LeadershipJob.all.reorder(created_at: :desc).first(max_jobs)
+    jobs_to_save = LeadershipJob.all.reorder(pub_date: :desc).first(max_jobs)
     LeadershipJob.where.not(id: jobs_to_save).delete_all
     puts "There are now at most #{max_jobs} leadership jobs"
     puts "Number of leadership jobs: #{LeadershipJob.all.size}"
@@ -90,7 +90,7 @@ namespace :import_rss do
 
     max_news = 500
     puts "Limiting number of news articles to #{max_news}"
-    articles_to_save = LeadershipArticle.all.reorder(created_at: :desc).first(max_news)
+    articles_to_save = LeadershipArticle.all.reorder(pub_date: :desc).first(max_news)
     LeadershipArticle.where.not(id: articles_to_save).delete_all
     puts "There are now at most #{max_news} leadership articles"
     puts "Number of leadership articles: #{LeadershipArticle.all.size}"
@@ -142,7 +142,7 @@ namespace :import_rss do
 
     max_news = 500
     puts "Limiting number of posts articles to #{max_news}"
-    jobs_to_save = FacebookPost.all.reorder(created_at: :desc).first(max_news)
+    jobs_to_save = FacebookPost.all.reorder(pub_date: :desc).first(max_news)
     FacebookPost.where.not(id: jobs_to_save).delete_all
     puts "There are now at most #{max_news} leadership posts"
     puts "Number of leadership posts: #{FacebookPost.all.size}"

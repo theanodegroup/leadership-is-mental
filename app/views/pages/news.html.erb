@@ -4,7 +4,7 @@
 <% breadcrumb @breadcrumb %>
 
 
-<% @leadership_articles = @leadership_articles.page(params[:page]).per(5) %>
+<% @leadership_articles = @leadership_articles.reorder(pub_date: :desc).page(params[:page]).per(5) %>
 <% @leadership_articles.each do |article| %>
   <%= render partial: 'shared/article', locals: { article: article } %>
 <% end %>
