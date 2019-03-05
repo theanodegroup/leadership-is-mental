@@ -78,7 +78,6 @@ namespace :import_rss do
             pub_date: item.published&.content,
             source: item.links&.first&.href,
             guid: item.id&.content,
-            image_url: image,
           })
         # rescue StandardError => e
         #   puts "Error in Importing Leadership News Article: #{e.class} => #{e.message}"
