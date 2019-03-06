@@ -7,7 +7,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:pub_date) %></th>
-      <th><%= model_class.human_attribute_name(:summary) %></th>
       <th><%= model_class.human_attribute_name(:source) %></th>
       <th><%= model_class.human_attribute_name(:guid) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -22,7 +21,6 @@
         <td><%= leadership_article.pub_date %></td>
         <td><%= leadership_article.source %></td>
         <td><%= leadership_article.guid %></td>
-        <td><%= leadership_article.image_url %></td>
         <td><%=l leadership_article.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
