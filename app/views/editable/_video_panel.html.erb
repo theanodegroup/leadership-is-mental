@@ -1,0 +1,55 @@
+<% js_phrase_heading = phrase_heading&.gsub('/', '-')&.gsub('_', '-') %>
+<div class="panel panel-default <%= js_phrase_heading %>">
+  <% if defined? phrase_heading %>
+    <style>
+      <% heading_font_size = phrase_lookup("#{phrase_heading}/size").to_i %>
+      <% if heading_font_size > 0 %>
+        .<%= js_phrase_heading %> .panel-heading p {
+          font-size: <%= heading_font_size %>px;
+        }
+      <% end %>
+    </style>
+    <div class="panel-heading">
+      <% font_size = phrase_lookup("#{phrase_heading}/size").to_i %>
+      <%= render partial: 'editable/size', locals: { phrase: phrase_heading } %>
+      <div style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'>
+        <%= render partial: "editable/#{editable_type(phrase_heading)}",
+                   locals: { phrase: phrase_heading } %>
+      </div>
+    </div>
+  <% end %>
+  <% if defined? phrase_body %>
+    <style>
+      <% body_font_size = phrase_lookup("#{phrase_body}/size").to_i %>
+      <% if body_font_size > 0 %>
+        .<%= js_phrase_heading %> .panel-body p {
+          font-size: <%= body_font_size %>px;
+        }
+      <% end %>
+    </style>
+    <div class="panel-body">
+      <% font_size = phrase_lookup("#{phrase_body}/size").to_i %>
+      <%= render partial: 'editable/size', locals: { phrase: phrase_body } %>
+      <div style='<%= "font-size: #{font_size}px !important" if font_size > 0 %>'>
+        <%= render partial: "editable/#{editable_type(phrase_body)}",
+                   locals: { phrase: phrase_body } %>
+      </div>
+    </div>
+  <% end %>
+  <% if defined?(footer_text) && defined?(footer_source) %>
+    <style>
+      <% footer_font_size = phrase_lookup("#{footer_text}/size").to_i %>
+      <% if footer_font_size > 0 %>
+        .<%= js_phrase_heading %> g.panel-footer p {
+          font-size: <%= footer_font_size %>px;
+        }
+      <% end %>
+    </style>
+    <div class="panel-footer text-right">
+      <%= render partial: 'editable/size', locals: { phrase: footer_text } %>
+      <div style='<%= " !important" if font_size > 0 %>'>
+        <%= link_to footer_text, footer_source %>
+      </div>
+    </div>
+  <% end %>
+</div>

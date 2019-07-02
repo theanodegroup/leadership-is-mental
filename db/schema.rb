@@ -66,9 +66,8 @@ ActiveRecord::Schema.define(version: 20190305233107) do
     t.datetime "pub_date"
     t.string   "source"
     t.string   "guid"
-    t.integer  "likes",      default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "leadership_jobs", force: :cascade do |t|
@@ -106,12 +105,6 @@ ActiveRecord::Schema.define(version: 20190305233107) do
     t.text     "value"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "settings", force: :cascade do |t|
-    t.text     "meta_keywords"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "short_urls", force: :cascade do |t|
