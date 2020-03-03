@@ -4,7 +4,7 @@ ruby '2.3.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7.1'
+gem 'rails', '4.2.11.1'
 # Use postgres as the database for Active Record
 gem "pg", "~> 0.18"
 # Use SCSS for stylesheets
@@ -34,7 +34,7 @@ gem 'kaminari' # Pagination
 gem 'social-share-button'
 
 # User Management
-gem 'devise'
+gem 'devise', ">= 4.7.1"
 
 # CMS
 gem "phrasing", '~> 4.1.0'
@@ -57,6 +57,7 @@ gem 'vhx-ruby', :git => 'https://github.com/vhx/vhx-ruby'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'gemsurance'
 end
 
 group :development do
@@ -69,3 +70,8 @@ end
 
 # Heroku
 gem 'rails_12factor', group: :production
+
+# Security updates
+gem "rake", ">= 12.3.3"
+gem "rack", ">= 1.6.12"
+gem "loofah", ">= 2.3.1"
