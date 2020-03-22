@@ -7,14 +7,16 @@ class ShortUrl < ActiveRecord::Base
                   :global_clicks, :aggregate_link, :clicks_by_minute]
 
   def shorten
+    standardize_url_prefix
     begin
       puts "Fetching data from Bitly"
 
-      data = Bitly.client.shorten(url)
+      client = Bitly::API::Client.new(token: ENV["BITLY_API_KEY"])
+      bitlink = client.shorten(long_url: url)
       puts "Updating"
       update_data = {
-        short_url: data.try(:short_url),
-        response_data: parse_response_data(data)
+        short_url: bitlink.try(:link),
+        response_data: bitlink.inspect
       }
     rescue StandardError => e
       # Report and store the error
@@ -63,6 +65,10 @@ class ShortUrl < ActiveRecord::Base
   end
 
   private
+
+  def standardize_url_prefix
+    update(url: "https://" + url) unless url.starts_with?('http')
+  end
 
   def parse_response_data(response_data)
     puts "Parsing response"

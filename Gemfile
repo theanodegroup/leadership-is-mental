@@ -49,7 +49,7 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'sitemap_generator'
 
 # URLs
-gem 'bitly'
+gem 'bitly', '2.0.0.beta.1'
 
 # Courses
 gem 'vhx-ruby', :git => 'https://github.com/vhx/vhx-ruby'
