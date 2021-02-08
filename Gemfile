@@ -39,7 +39,7 @@ gem 'devise', ">= 4.7.1"
 # CMS
 gem "phrasing", '~> 4.1.0'
 gem 'quilljs-rails'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary' # Store uploaded Files users can download
 
 # Validations
